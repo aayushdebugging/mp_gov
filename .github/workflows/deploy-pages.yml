@@ -1,14 +1,17 @@
 name: Deploy to GitHub Pages
 
+# Pushes `public/` to the `gh-pages` branch. You then host the site with:
+# Settings → Pages → Build and deployment → Deploy from a branch → gh-pages / (root).
+# This avoids the GitHub Actions Pages API that returns "Get Pages site failed" until
+# Pages is pre-configured for "GitHub Actions" deployments.
+
 on:
   push:
     branches: ["main", "master"]
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: write
 
 concurrency:
   group: pages
@@ -16,14 +19,10 @@ concurrency:
 
 jobs:
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/upload-pages-artifact@v3
+      - uses: peaceiris/actions-gh-pages@v4
         with:
-          path: public
-      - id: deployment
-        uses: actions/deploy-pages@v5
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

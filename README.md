@@ -8,9 +8,11 @@ Static demo of a unified Madhya Pradesh citizen-services style UI: login flows, 
 |------|--------|
 | `public/` | **Deploy this folder** — `index.html`, `assets/css/main.css`, `assets/js/main.js` |
 | `archive/mp_gov_v3-monolith.html` | Earlier single-file version (kept for reference) |
-| `.github/workflows/deploy-pages.yml` | Publishes `public/` to GitHub Pages on push |
+| `.github/workflows/deploy-pages.yml` | Pushes `public/` to branch **`gh-pages`** for hosting |
 
 ## Publish on GitHub
+
+This project deploys by pushing static files to the **`gh-pages`** branch (using [peaceiris/actions-gh-pages](https://github.com/peaceiris/actions-gh-pages)). You do **not** need Pages set to “GitHub Actions,” which avoids **“Get Pages site failed” / Not Found** from GitHub’s Actions-based Pages API.
 
 1. Create a new repository on GitHub (empty, no README required if you already have this one).
 2. From this folder:
@@ -24,21 +26,21 @@ Static demo of a unified Madhya Pradesh citizen-services style UI: login flows, 
    git push -u origin main
    ```
 
-3. **Turn on Pages for Actions (required before deploy succeeds)**  
-   In the GitHub repo: **Settings → Pages**. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). Save if prompted.  
-   Until this is set, GitHub has no Pages site record; workflows that call the Pages API can fail with **“Get Pages site failed” / Not Found**.
+3. Wait for **Actions → Deploy to GitHub Pages** to finish once (or run it manually). That creates the **`gh-pages`** branch.
 
-4. Run the workflow: push to `main` (or `master`), or open **Actions → Deploy to GitHub Pages → Run workflow**. When it succeeds, the live URL is in the job summary (often `https://YOUR_USERNAME.github.io/YOUR_REPO/`).
+4. **Settings → Pages → Build and deployment**  
+   - **Source**: **Deploy from a branch**  
+   - **Branch**: **`gh-pages`**  
+   - **Folder**: **`/ (root)`**  
+   Save. After a minute, the site is usually at `https://YOUR_USERNAME.github.io/YOUR_REPO/`.
 
-### If you already saw “Get Pages site failed”
+### If you still see “Get Pages site failed”
 
-Complete step 3 above, then in **Actions** open the failed run and click **Re-run all jobs**, or use **Run workflow** on **Deploy to GitHub Pages**.
+That message comes from GitHub’s **`configure-pages` / Actions Pages** flow. This repo’s workflow no longer uses that path. Confirm on GitHub that `.github/workflows/deploy-pages.yml` matches this repository (pull the latest `main`), and that you are not also running a different Pages workflow from the Actions templates.
 
-The optional `enablement` input on `configure-pages` only works with a **personal access token** stored as a secret—not with the default `GITHUB_TOKEN`—so this repo’s workflow does not use that step; enabling Pages once in Settings is the intended path.
+### Optional: Pages from `/docs` on `main`
 
-### Optional: Pages from `/docs` instead
-
-If you prefer not to use Actions, copy the contents of `public/` into a `docs/` folder at the repo root, commit, then set **Pages → Source** to branch `main` and folder **`/docs`**.
+If you do not want a `gh-pages` branch, copy the contents of `public/` into a `docs/` folder at the repo root, commit, then set **Pages → Deploy from a branch** → **`main`** / **`/docs`**. You can remove or disable the workflow in that case.
 
 ## Local preview
 
