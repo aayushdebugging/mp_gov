@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="MP Sarkar — unified citizen app prototype: schemes, certificates, nagarpalika, complaints, and more (demo UI).">
+<meta name="theme-color" content="#1B4FA8">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="MP Sarkar — Unified Citizen App">
+<meta property="og:description" content="Demo prototype of a unified Madhya Pradesh citizen services experience.">
+<meta property="og:type" content="website">
+<title>MP Sarkar — Unified Citizen App</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<div class="device">
+<div class="sb"><span>9:41</span><span>MP Sarkar · ●●● 85%</span></div>
+
+<!-- ═══════════ LOGIN ═══════════ -->
+<div id="s-login" class="scr on" style="background:var(--blue)">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 26px">
+    <div style="width:72px;height:72px;background:rgba(255,255,255,.15);border-radius:22px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;border:1.5px solid rgba(255,255,255,.2)"><span style="font-size:36px">🏛️</span></div>
+    <div style="color:#fff;font-size:24px;font-weight:700;text-align:center">MP Sarkar</div>
+    <div style="color:rgba(255,255,255,.7);font-size:13px;margin-top:5px;text-align:center">Madhya Pradesh · Unified Citizen Platform</div>
+    <div style="display:flex;gap:10px;margin-top:18px">
+      <div id="btn-en" onclick="setLang('en')" style="padding:7px 18px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;background:#fff;color:var(--blue)">English</div>
+      <div id="btn-hi" onclick="setLang('hi')" style="padding:7px 18px;border-radius:20px;cursor:pointer;font-size:13px;font-weight:700;background:rgba(255,255,255,.15);color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.3)">हिंदी</div>
+    </div>
+    <div style="background:rgba(255,255,255,.1);border-radius:16px;padding:22px;margin-top:22px;width:100%;border:1px solid rgba(255,255,255,.13)">
+      <div style="color:rgba(255,255,255,.9);font-size:13px;font-weight:600;margin-bottom:10px">Mobile Number</div>
+      <div style="display:flex;gap:8px">
+        <div style="background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:10px;padding:11px 10px;color:#fff;font-size:14px;font-weight:600;flex-shrink:0">+91</div>
+        <input style="flex:1;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);border-radius:10px;padding:11px 13px;font-size:16px;color:#fff;font-family:var(--font);outline:none;letter-spacing:1px" placeholder="98765 43210" value="98765 43210">
+      </div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:7px">OTP will be sent via SMS</div>
+      <button onclick="go('s-otp')" style="width:100%;background:#fff;color:var(--blue);border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;margin-top:14px;font-family:var(--font)">Get OTP</button>
+    </div>
+    <div style="color:rgba(255,255,255,.4);font-size:11px;margin-top:18px;text-align:center">Secure · Aadhaar Verified · MP Government</div>
+  </div>
+</div>
+
+<!-- ═══════════ OTP ═══════════ -->
+<div id="s-otp" class="scr" style="background:var(--blue)">
+  <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 26px">
+    <button onclick="go('s-login')" style="align-self:flex-start;background:rgba(255,255,255,.15);border:none;border-radius:50%;width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer;margin-bottom:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div style="width:58px;height:58px;background:rgba(255,255,255,.15);border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:18px"><span style="font-size:26px">💬</span></div>
+    <div style="color:#fff;font-size:20px;font-weight:700">Enter OTP</div>
+    <div style="color:rgba(255,255,255,.65);font-size:13px;margin-top:5px">Sent to +91 98765 43210</div>
+    <div class="otp-row">
+      <input class="otp-box" maxlength="1" value="4"><input class="otp-box" maxlength="1" value="8"><input class="otp-box" maxlength="1" value="3"><input class="otp-box" maxlength="1" value="9"><input class="otp-box" maxlength="1" value="1"><input class="otp-box" maxlength="1" value="2">
+    </div>
+    <div style="color:rgba(255,255,255,.55);font-size:13px;margin-bottom:18px">Resend in <strong style="color:#fff">00:45</strong></div>
+    <button onclick="go('s-home')" style="width:100%;background:#fff;color:var(--blue);border:none;border-radius:10px;padding:14px;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font)">Verify & Login</button>
+  </div>
+</div>
+
+<!-- ═══════════ HOME ═══════════ -->
+<div id="s-home" class="scr">
+  <div style="background:var(--blue);padding:16px 16px 30px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+      <div>
+        <div style="color:rgba(255,255,255,.8);font-size:13px" class="t" data-en="Good morning," data-hi="शुभ प्रभात,">Good morning,</div>
+        <div style="color:#fff;font-size:20px;font-weight:700;margin-top:1px">Rajesh Kumar</div>
+        <div style="display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.13);border-radius:6px;padding:3px 9px;margin-top:5px;border:1px solid rgba(255,255,255,.13)"><span style="font-size:10px">📍</span><span style="color:rgba(255,255,255,.88);font-size:11px">Bhopal Nagar Nigam</span></div>
+      </div>
+      <div class="lang-btn" onclick="toggleLang()"><span id="lh" class="hi">अ</span><span id="le" class="en active">E</span></div>
+    </div>
+    <div style="background:rgba(255,255,255,.13);border-radius:10px;display:flex;align-items:center;gap:8px;padding:9px 13px;cursor:pointer;border:1px solid rgba(255,255,255,.1)" onclick="go('s-search')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <span class="t" style="color:rgba(255,255,255,.55);font-size:13px" data-en="Search any government service…" data-hi="कोई भी सेवा खोजें…">Search any government service…</span>
+    </div>
+  </div>
+  <div class="qt-grid">
+    <div class="qt" onclick="go('s-cert-list')"><div class="qt-icon" style="background:#ddeeff">📄</div><span class="t" data-en="Certificates" data-hi="प्रमाणपत्र">Certificates</span></div>
+    <div class="qt" onclick="go('s-schemes')"><div class="qt-icon" style="background:#e6f4e0">🏛️</div><span class="t" data-en="Schemes" data-hi="योजनाएं">Schemes</span></div>
+    <div class="qt" onclick="go('s-complaints')"><div class="qt-icon" style="background:#fff3e0">📋</div><span class="t" data-en="Complaints" data-hi="शिकायतें">Complaints</span></div>
+    <div class="qt" onclick="go('s-track')"><div class="qt-icon" style="background:#f5f3ff">🔍</div><span class="t" data-en="Track" data-hi="ट्रैक">Track</span></div>
+  </div>
+  <div class="body">
+    <div class="banner" style="background:linear-gradient(135deg,#be185d,#9f1239)" onclick="go('s-women-safety')">
+      <div class="banner-icon">🆘</div>
+      <div style="flex:1"><div style="color:#fff;font-size:15px;font-weight:700" class="t" data-en="Women Safety — SOS" data-hi="महिला सुरक्षा — SOS">Women Safety — SOS</div><div style="color:rgba(255,255,255,.78);font-size:12px;margin-top:2px" class="t" data-en="Emergency alert · Nearest police station" data-hi="आपातकालीन अलर्ट · निकटतम थाना">Emergency alert · Nearest police station</div></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+    <div class="banner" style="background:linear-gradient(135deg,#065f46,#047857);margin-top:8px" onclick="go('s-swachh')">
+      <div class="banner-icon">🧹</div>
+      <div style="flex:1"><div style="color:#fff;font-size:15px;font-weight:700" class="t" data-en="Swachh Bharat Complaint" data-hi="स्वच्छ भारत शिकायत">Swachh Bharat Complaint</div><div style="color:rgba(255,255,255,.78);font-size:12px;margin-top:2px" class="t" data-en="Click photo · Auto-location · Submit" data-hi="फोटो लें · स्थान · जमा करें">Click photo · Auto-location · Submit</div></div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="2.5"><path d="m9 18 6-6-6-6"/></svg>
+    </div>
+    <div class="slabel t" data-en="All Services" data-hi="सभी सेवाएं">All Services</div>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="go('s-nagarpalika')"><div class="svc-icon" style="background:#ddeeff">🏘️</div><div><div class="svc-title t" data-en="Nagarpalika" data-hi="नगरपालिका">Nagarpalika</div><div class="svc-sub">Tax, water, trade</div></div></div>
+      <div class="svc-card" onclick="go('s-cert-list')"><div class="svc-icon" style="background:#e6f4e0">📄</div><div><div class="svc-title t" data-en="Certificates" data-hi="प्रमाणपत्र">Certificates</div><div class="svc-sub">Caste, income, domicile</div></div></div>
+      <div class="svc-card" onclick="go('s-land')"><div class="svc-icon" style="background:#fef9c3">🗺️</div><div><div class="svc-title t" data-en="Land Records" data-hi="भूमि अभिलेख">Land Records</div><div class="svc-sub">Khasra, Khatauni</div></div></div>
+      <div class="svc-card" onclick="go('s-schemes')"><div class="svc-icon" style="background:#f5f3ff">🏛️</div><div><div class="svc-title t" data-en="Schemes" data-hi="योजनाएं">Schemes</div><div class="svc-sub">Benefits & eligibility</div></div></div>
+      <div class="svc-card" onclick="go('s-police')"><div class="svc-icon" style="background:#ffe8e0">🚔</div><div><div class="svc-title t" data-en="Police Services" data-hi="पुलिस सेवाएं">Police Services</div><div class="svc-sub">FIR, NOC, complaints</div></div></div>
+      <div class="svc-card" onclick="go('s-complaints')"><div class="svc-icon" style="background:#fff3e0">📋</div><div><div class="svc-title t" data-en="Grievances" data-hi="शिकायत निवारण">Grievances</div><div class="svc-sub">Raise & track</div></div></div>
+      <div class="svc-card" onclick="go('s-farmer')"><div class="svc-icon" style="background:#d1fae5">🌾</div><div><div class="svc-title t" data-en="Farmer Help" data-hi="किसान सहायता">Farmer Help</div><div class="svc-sub">Schemes, AI assist</div></div></div>
+      <div class="svc-card" onclick="go('s-kiosk')"><div class="svc-icon" style="background:#fce7f3">📍</div><div><div class="svc-title t" data-en="Find Kiosk" data-hi="केंद्र खोजें">Find Kiosk</div><div class="svc-sub">MPOnline, Lok Sewa</div></div></div>
+    </div>
+    <div class="slabel">Recent Notices</div>
+    <div style="margin:0 16px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;gap:10px"><div style="background:var(--indigo-light);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0">📢</div><div><div style="font-size:13px;font-weight:600">PM Awas Yojana — New List Released</div><div style="font-size:11px;color:var(--ink3);margin-top:1px">28 Mar 2026 · Housing</div></div></div>
+      <div style="padding:12px 14px;display:flex;gap:10px"><div style="background:var(--orange-light);width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0">💰</div><div><div style="font-size:13px;font-weight:600">Property Tax Due — 30 Apr 2026</div><div style="font-size:11px;color:var(--ink3);margin-top:1px">25 Mar 2026 · Finance</div></div></div>
+    </div>
+    <div style="height:72px"></div>
+  </div>
+  <div class="bnav">
+    <button class="ni act" onclick="go('s-home')"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--blue)"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span style="color:var(--blue)">Home</span></button>
+    <button class="ni" onclick="go('s-my-dashboard')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></button>
+    <button class="ni" onclick="go('s-my-transactions')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg><span>Transactions</span></button>
+    <button class="ni" onclick="go('s-account')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Profile</span></button>
+  </div>
+</div>
+
+<!-- ═══════════ SEARCH ═══════════ -->
+<div id="s-search" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><input style="flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:9px 12px;color:#fff;font-size:14px;font-family:var(--font);outline:none" placeholder="Search services…"></div></div>
+  <div class="body">
+    <div class="slabel">Quick Access</div>
+    <div class="row" onclick="go('s-nagarpalika')"><div class="ri" style="background:#E8F0FC">🏠</div><div class="rinfo"><h4>Property Tax</h4><p>Pay or apply</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-cert-caste')"><div class="ri" style="background:#e6f4e0">📄</div><div class="rinfo"><h4>Caste Certificate</h4><p>Apply or track</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-swachh')"><div class="ri" style="background:#d1fae5">🧹</div><div class="rinfo"><h4>Swachh Bharat Complaint</h4><p>File with photo</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-women-safety')"><div class="ri" style="background:var(--pink-light)">🆘</div><div class="rinfo"><h4>Women Safety SOS</h4><p>Emergency & complaints</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-track')"><div class="ri" style="background:#fff3e0">🔍</div><div class="rinfo"><h4>Track Application</h4><p>Enter Application ID</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-schemes')"><div class="ri" style="background:#f5f3ff">🏛️</div><div class="rinfo"><h4>Government Schemes</h4><p>Eligibility & apply</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-land')"><div class="ri" style="background:#fef9c3">🗺️</div><div class="rinfo"><h4>Land Records / Khasra</h4><p>View plot details</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-police')"><div class="ri" style="background:#ffe8e0">🚔</div><div class="rinfo"><h4>Police Services</h4><p>FIR, NOC, helpline</p></div><div class="chev"></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     NAGARPALIKA HUB
+════════════════════════════════════════ -->
+<div id="s-nagarpalika" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>Nagarpalika Services</h2><div class="sub">eNagarpalika · All municipal services</div></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div></div>
+  <div class="body">
+    <div class="slabel">Payments</div>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="go('s-prop-tax')"><div class="svc-icon" style="background:#ddeeff">🏠</div><div><div class="svc-title">Property Tax</div><div class="svc-sub">Pay & history</div></div></div>
+      <div class="svc-card" onclick="go('s-water-bill')"><div class="svc-icon" style="background:#e0f5ef">💧</div><div><div class="svc-title">Water Charges</div><div class="svc-sub">Bill & meter</div></div></div>
+      <div class="svc-card" onclick="go('s-rental')"><div class="svc-icon" style="background:#fce7f3">🏢</div><div><div class="svc-title">Rental</div><div class="svc-sub">NOC & payment</div></div></div>
+      <div class="svc-card" onclick="go('s-trade-license')"><div class="svc-icon" style="background:#f5f3ff">🏪</div><div><div class="svc-title">Trade License</div><div class="svc-sub">New & renewal</div></div></div>
+    </div>
+    <div class="slabel">Certificates & Permits</div>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="go('s-fire')"><div class="svc-icon" style="background:#ffe8e0">🔥</div><div><div class="svc-title">Fire Safety</div><div class="svc-sub">NOC certificate</div></div></div>
+      <div class="svc-card" onclick="go('s-building-plan')"><div class="svc-icon" style="background:#fef9c3">🏗️</div><div><div class="svc-title">Building Plan</div><div class="svc-sub">Approval & status</div></div></div>
+      <div class="svc-card" onclick="go('s-tree-cutting')"><div class="svc-icon" style="background:#d1fae5">🌳</div><div><div class="svc-title">Tree Cutting</div><div class="svc-sub">Permission</div></div></div>
+      <div class="svc-card" onclick="go('s-encroachment')"><div class="svc-icon" style="background:#e0e7ff">🗺️</div><div><div class="svc-title">Encroachment</div><div class="svc-sub">NOC application</div></div></div>
+    </div>
+    <div class="slabel">Utilities & Connections</div>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="go('s-sewerage')"><div class="svc-icon" style="background:#fef3e9">🚿</div><div><div class="svc-title">Sewerage</div><div class="svc-sub">New connection</div></div></div>
+      <div class="svc-card" onclick="go('s-water-conn')"><div class="svc-icon" style="background:#f0fdf4">🚰</div><div><div class="svc-title">Water Connection</div><div class="svc-sub">New / change</div></div></div>
+      <div class="svc-card" onclick="go('s-street-light')"><div class="svc-icon" style="background:#fdf4ff">💡</div><div><div class="svc-title">Street Light</div><div class="svc-sub">Report fault</div></div></div>
+      <div class="svc-card" onclick="go('s-road-repair')"><div class="svc-icon" style="background:#fff7ed">🛣️</div><div><div class="svc-title">Road Repair</div><div class="svc-sub">File complaint</div></div></div>
+    </div>
+    <div class="slabel">Door-to-Door & Local</div>
+    <div class="svc-grid">
+      <div class="svc-card" onclick="go('s-d2d')"><div class="svc-icon" style="background:#f0f9ff">🚪</div><div><div class="svc-title">Door to Door</div><div class="svc-sub">Waste collection</div></div></div>
+      <div class="svc-card" onclick="go('s-kiosk')"><div class="svc-icon" style="background:#f0fdf4">📍</div><div><div class="svc-title">Find Kiosk</div><div class="svc-sub">Lok Sewa centres</div></div></div>
+      <div class="svc-card" onclick="go('s-swachh')"><div class="svc-icon" style="background:#fef2f2">🧹</div><div><div class="svc-title">Swachh Bharat</div><div class="svc-sub">Cleanliness complaint</div></div></div>
+      <div class="svc-card" onclick="go('s-birth-cert')"><div class="svc-icon" style="background:#fff3e0">👤</div><div><div class="svc-title">Citizen Services</div><div class="svc-sub">Birth, death, marriage</div></div></div>
+    </div>
+    <div style="height:16px"></div>
+  </div>
+</div>
+
+<!-- ════════ PROP TAX ════════ -->
+<div id="s-prop-tax" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div><h2>Property Tax</h2><div class="sub">Bhopal Nagar Nigam</div></div></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card" style="background:var(--blue-xlight);border-color:#b6ccf8">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div><div style="font-size:11px;color:var(--blue);font-weight:600">PROPERTY ID</div><div style="font-size:15px;font-weight:700">BPL/PP/4721839</div></div><span class="pill pill-p">Due</span></div>
+      <div style="font-size:13px;color:var(--ink2)">Plot 24, Civil Lines, Bhopal</div>
+      <div style="font-size:12px;color:var(--ink3)">Area: 1,200 sq ft · Residential</div>
+    </div>
+    <div class="card">
+      <h3>Bill — FY 2025-26</h3>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--ink3)">Tax Amount</span><span style="font-size:13px;font-weight:600">₹3,850</span></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--ink3)">Penalty</span><span style="font-size:13px;font-weight:600;color:var(--red)">₹385</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0"><span style="font-size:14px;font-weight:700">Total Due</span><span style="font-size:16px;font-weight:700;color:var(--blue)">₹4,235</span></div>
+      <div class="ib ib-amber" style="margin-top:4px">⚠️ Due date: 30 Apr 2026</div>
+    </div>
+    <div class="ib ib-blue">⏱️ Payment processes in real-time. Receipt via SMS.</div>
+    <button class="btn btn-p" onclick="go('s-pay-modes')" style="margin-bottom:8px">Pay ₹4,235 Now</button>
+    <button class="btn btn-s">Download Bill</button>
+    <div class="slabel" style="padding-left:0;margin-top:6px">Payment History</div>
+    <div style="background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between"><div><div style="font-size:13px;font-weight:600">FY 2024-25</div><div style="font-size:11px;color:var(--ink3)">28 Mar 2025</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:700">₹3,620</div><span class="pill pill-d">Paid</span></div></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between"><div><div style="font-size:13px;font-weight:600">FY 2023-24</div><div style="font-size:11px;color:var(--ink3)">15 Mar 2024</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:700">₹3,400</div><span class="pill pill-d">Paid</span></div></div>
+    </div>
+    <div style="height:16px"></div>
+  </div></div>
+</div>
+
+<!-- ════════ WATER BILL ════════ -->
+<div id="s-water-bill" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div><h2>Water Charges</h2><div class="sub">Bhopal Nagar Nigam</div></div></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card" style="background:#e0f5ef;border-color:#6ee7b7">
+      <div style="font-size:11px;color:var(--teal);font-weight:600">CONNECTION ID</div>
+      <div style="font-size:15px;font-weight:700">WTR/BPL/3819</div>
+      <div style="font-size:12px;color:var(--ink2);margin-top:3px">Plot 24, Civil Lines · Domestic</div>
+    </div>
+    <div class="card">
+      <h3>Bill — March 2026</h3>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--ink3)">Units consumed</span><span style="font-size:13px;font-weight:600">18 KL</span></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border)"><span style="font-size:13px;color:var(--ink3)">Rate</span><span style="font-size:13px;font-weight:600">₹21.39/KL</span></div>
+      <div style="display:flex;justify-content:space-between;padding:9px 0"><span style="font-size:14px;font-weight:700">Total Due</span><span style="font-size:16px;font-weight:700;color:var(--blue)">₹385</span></div>
+    </div>
+    <button class="btn btn-p" onclick="go('s-pay-modes')" style="margin-bottom:8px">Pay ₹385</button>
+    <button class="btn btn-s">Submit Meter Reading</button>
+    <div class="slabel" style="padding-left:0;margin-top:6px">History</div>
+    <div style="background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between"><div><div style="font-size:13px;font-weight:600">Feb 2026</div></div><div><div style="font-size:13px;font-weight:700">₹368</div><span class="pill pill-d">Paid</span></div></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between"><div><div style="font-size:13px;font-weight:600">Jan 2026</div></div><div><div style="font-size:13px;font-weight:700">₹392</div><span class="pill pill-d">Paid</span></div></div>
+    </div>
+    <div style="height:16px"></div>
+  </div></div>
+</div>
+
+<!-- ════════ RENTAL ════════ -->
+<div id="s-rental" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Rental</h2></div></div>
+  <div class="body">
+    <div class="row" onclick="go('s-pay-modes')"><div class="ri" style="background:#fce7f3">💳</div><div class="rinfo"><h4>Pay Rental Charges</h4><p>Rental ID or Mobile</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:var(--teal-light)">📄</div><div class="rinfo"><h4>Apply for Rental NOC</h4><p>Property ID required</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-track')"><div class="ri" style="background:var(--blue-light)">🔍</div><div class="rinfo"><h4>Track Application</h4><p>Enter Application ID</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:var(--green-light)">📋</div><div class="rinfo"><h4>Register Rental Property</h4><p>New registration</p></div><div class="chev"></div></div>
+  </div>
+</div>
+
+<!-- ════════ TRADE LICENSE ════════ -->
+<div id="s-trade-license" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Trade License</h2></div></div>
+  <div class="body">
+    <div class="row" onclick="go('s-pay-modes')"><div class="ri" style="background:#f5f3ff">💳</div><div class="rinfo"><h4>Pay Trade License Bill</h4><p>Application ID or Mobile</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-trade-new-form')"><div class="ri" style="background:var(--green-light)">🆕</div><div class="rinfo"><h4>Apply for New License</h4><p>3-step form · Property ID required</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:var(--amber-light)">🔁</div><div class="rinfo"><h4>Renewal</h4><p>Existing license holders</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-track')"><div class="ri" style="background:var(--blue-light)">🔍</div><div class="rinfo"><h4>Track Application</h4></div><div class="chev"></div></div>
+  </div>
+</div>
+
+<!-- ════════ TRADE NEW FORM ════════ -->
+<div id="s-trade-new-form" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-trade-license')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>New Trade License</h2></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Business Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Business Information</h3>
+      <div class="field"><label>ULB</label><select><option>Bhopal Nagar Nigam</option><option>Indore Nagar Nigam</option></select></div>
+      <div class="field"><label>Property ID <span class="auto-tag">Auto</span></label><input type="text" value="BPL-2024-00847" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Business Name</label><input type="text" placeholder="Enter business name"></div>
+      <div class="field"><label>Trade Category</label><select><option>Retail</option><option>Food & Restaurant</option><option>Service</option><option>Manufacturing</option></select></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>7–15 working days</strong> · Approval: ULB Commissioner</div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Next — Documents →</button>
+  </div></div>
+</div>
+
+<!-- ════════ FIRE SAFETY ════════ -->
+<div id="s-fire" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Fire Safety Certificate</h2></div></div>
+  <div class="body">
+    <div style="margin:12px 16px 4px" class="ib ib-red">⚠️ You need an Approved Fire Plan NOC before applying for Fire Safety Certificate.</div>
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:var(--red-light)">📐</div><div class="rinfo"><h4>Apply for Fire Plan Approval</h4><p>4-step form · No prior ID needed</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:#FEF3E9">🔥</div><div class="rinfo"><h4>Apply for Fire Safety Certificate</h4><p>Requires Approval NOC No.</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:#FEF9E8">🔁</div><div class="rinfo"><h4>Fire Safety Renewal</h4></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-track')"><div class="ri" style="background:#e0e7ff">🔍</div><div class="rinfo"><h4>Track Application</h4></div><div class="chev"></div></div>
+  </div>
+</div>
+
+<!-- ════════ BUILDING PLAN ════════ -->
+<div id="s-building-plan" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Building Plan Approval</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Apply for Building Plan</h3>
+      <div class="field"><label>ULB</label><select><option>Bhopal Nagar Nigam</option></select></div>
+      <div class="field"><label>Property ID <span class="auto-tag">Auto</span></label><input type="text" value="BPL-2024-00847" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Purpose</label><select><option>Residential</option><option>Commercial</option><option>Extension</option></select></div>
+      <div class="field"><label>Built-up Area (sq ft)</label><input type="number" placeholder="e.g. 1200"></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>30 days</strong> · Approval: Municipal Engineer</div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Application</button>
+  </div></div>
+</div>
+
+<!-- ════════ TREE CUTTING ════════ -->
+<div id="s-tree-cutting" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Tree Cutting Permission</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Permission Request</h3>
+      <div class="field"><label>Address / Location of Tree</label><input type="text" placeholder="Street / landmark"></div>
+      <div class="field"><label>Reason for Cutting</label><select><option>Construction</option><option>Dead/Diseased Tree</option><option>Dangerous to Property</option><option>Other</option></select></div>
+      <div class="field"><label>Number of Trees</label><input type="number" placeholder="1"></div>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📷</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Upload Photo of Tree</div><div style="font-size:11px;color:var(--ink3)">JPEG / PNG · max 5 MB</div></div>
+    </div>
+    <div class="ib ib-amber">⚠️ Cutting trees without permission is punishable. Permission required even on private property.</div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Request</button>
+  </div></div>
+</div>
+
+<!-- ════════ ENCROACHMENT ════════ -->
+<div id="s-encroachment" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Encroachment NOC</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Temporary Encroachment Permit</h3>
+      <div class="field"><label>Property ID <span class="auto-tag">Auto</span></label><input type="text" value="BPL-2024-00847" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Type</label><select><option>Shop Display</option><option>Temporary Stall</option><option>Construction Material</option><option>Other</option></select></div>
+      <div class="field"><label>Duration (days)</label><input type="number" placeholder="e.g. 30"></div>
+      <div class="field"><label>Area Required (sq ft)</label><input type="number" placeholder="e.g. 50"></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>7 working days</strong> · Approval: ULB Officer</div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Application</button>
+  </div></div>
+</div>
+
+<!-- ════════ SEWERAGE ════════ -->
+<div id="s-sewerage" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Sewerage Connection</h2></div></div>
+  <div class="body">
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:#fef3e9">🆕</div><div class="rinfo"><h4>New Connection</h4><p>Property Tax ID required</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-pay-modes')"><div class="ri" style="background:#fef9c3">💳</div><div class="rinfo"><h4>Pay Sewerage Charges</h4><p>Connection ID or Mobile</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:var(--teal-light)">📄</div><div class="rinfo"><h4>Apply for NOC</h4></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-track')"><div class="ri" style="background:var(--blue-light)">🔍</div><div class="rinfo"><h4>Track Application</h4></div><div class="chev"></div></div>
+  </div>
+</div>
+
+<!-- ════════ WATER CONNECTION ════════ -->
+<div id="s-water-conn" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Water Connection</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>New Connection Request</h3>
+      <div class="field"><label>Property Tax ID <span class="auto-tag">Auto</span></label><input type="text" value="BPL-2024-00847" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Connection Type</label><select><option>Domestic</option><option>Commercial</option><option>Industrial</option></select></div>
+      <div class="field"><label>Pipe Diameter</label><select><option>15mm (Domestic)</option><option>20mm</option><option>25mm (Commercial)</option></select></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>15–30 working days</strong> · Approval: Water Dept.</div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Request</button>
+  </div></div>
+</div>
+
+<!-- ════════ STREET LIGHT ════════ -->
+<div id="s-street-light" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Street Light Complaint</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="loc-pill"><span class="lic">📌</span><div class="ltxt">Auto-detected: Civil Lines, Bhopal — 462001</div></div>
+    <div class="card">
+      <h3>Complaint Details</h3>
+      <div class="field"><label>Issue Type</label><select><option>Light not working</option><option>Light on during day</option><option>Pole damaged</option><option>Wire hanging</option><option>New installation needed</option></select></div>
+      <div class="field"><label>Pole Number (if visible)</label><input type="text" placeholder="e.g. BPL-0234"></div>
+      <div class="field"><label>Landmark</label><input type="text" placeholder="Near hospital / school…"></div>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📷</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Upload Photo</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Expected resolution: <strong>3–5 working days</strong></div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Complaint</button>
+  </div></div>
+</div>
+
+<!-- ════════ ROAD REPAIR ════════ -->
+<div id="s-road-repair" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Road Repair Complaint</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="loc-pill"><span class="lic">📌</span><div class="ltxt">Auto-detected: Civil Lines, Bhopal — 462001</div></div>
+    <div class="card">
+      <h3>Complaint Details</h3>
+      <div class="field"><label>Issue Type</label><select><option>Pothole</option><option>Broken footpath</option><option>Waterlogging</option><option>Road marking faded</option><option>Speed bump damaged</option></select></div>
+      <div class="field"><label>Severity</label><select><option>Minor</option><option>Moderate</option><option>Severe — road blocked</option></select></div>
+      <div class="field"><label>Location Description</label><input type="text" placeholder="Near landmark…"></div>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📷</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Upload Photo</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Expected resolution: <strong>7–15 working days</strong></div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Complaint</button>
+  </div></div>
+</div>
+
+<!-- ════════ DOOR TO DOOR ════════ -->
+<div id="s-d2d" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-nagarpalika')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Door to Door Service</h2></div></div>
+  <div class="body">
+    <div style="margin:12px 16px" class="ib ib-green">✅ Your D2D waste collection is active. Next pickup: Monday, 7 AM</div>
+    <div class="row" onclick="go('s-pay-modes')"><div class="ri" style="background:#f0f9ff">💳</div><div class="rinfo"><h4>Pay D2D Charges</h4><p>Connection ID or Mobile</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-success-app')"><div class="ri" style="background:var(--green-light)">🆕</div><div class="rinfo"><h4>New D2D Connection</h4><p>Property Tax ID required</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-track')"><div class="ri" style="background:var(--blue-light)">🔍</div><div class="rinfo"><h4>Track Application</h4></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-complaints')"><div class="ri" style="background:var(--orange-light)">⚠️</div><div class="rinfo"><h4>Report Missed Pickup</h4><p>File a complaint</p></div><div class="chev"></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     CERTIFICATES LIST
+════════════════════════════════════════ -->
+<div id="s-cert-list" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>Certificates</h2><div class="sub">Apply · Track · Download</div></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div></div>
+  <div class="body">
+    <div class="slabel">Government Certificates</div>
+    <div class="row" onclick="go('s-cert-caste')"><div class="ri" style="background:#ddeeff">🧾</div><div class="rinfo"><h4>Caste Certificate</h4><p>SC / ST / OBC · SDM Office</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-cert-income')"><div class="ri" style="background:#e6f4e0">💰</div><div class="rinfo"><h4>Income Certificate</h4><p>Annual family income proof</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-cert-domicile')"><div class="ri" style="background:#f5f3ff">🏠</div><div class="rinfo"><h4>Domicile Certificate</h4><p>MP residence proof</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-cert-marriage')"><div class="ri" style="background:#fff3e0">💒</div><div class="rinfo"><h4>Marriage Certificate</h4><p>Registered marriage proof</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-birth-cert')"><div class="ri" style="background:#fce7f3">🍼</div><div class="rinfo"><h4>Birth Certificate</h4><p>Date of birth proof</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-death-cert')"><div class="ri" style="background:#e0e7ff">📜</div><div class="rinfo"><h4>Death Certificate</h4><p>Deceased person registration</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-cert-character')"><div class="ri" style="background:#d1fae5">🛂</div><div class="rinfo"><h4>Character Certificate</h4><p>Police clearance / NOC</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-cert-obc-ncl')"><div class="ri" style="background:#fef9c3">📋</div><div class="rinfo"><h4>OBC-NCL Certificate</h4><p>Non-Creamy Layer certificate</p></div><div class="chev"></div></div>
+    <div class="slabel">My Applications</div>
+    <div style="margin:4px 16px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;cursor:pointer" onclick="go('s-track-result')"><div><div style="font-size:13px;font-weight:600">Caste Certificate</div><div style="font-size:11px;color:var(--ink3)">MP/CERT/2026/018341 · 25 Mar</div></div><span class="pill pill-r">In Review</span></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Income Certificate</div><div style="font-size:11px;color:var(--ink3)">MP/CERT/2025/009821</div></div><div style="background:var(--blue-light);color:var(--blue);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;cursor:pointer">⬇ Download</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- helper macro for cert screens -->
+<!-- ════ CASTE CERT ════ -->
+<div id="s-cert-caste" class="scr">
+  <div class="cert-header"><div class="icon-big">🧾</div><div><div style="color:#fff;font-size:16px;font-weight:700">Caste Certificate</div><div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">SC / ST / OBC · SDM Office</div></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Applicant Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Auto-filled from Samagra</h3>
+      <div class="ib ib-blue" style="margin-bottom:10px">🪪 Details fetched from Samagra ID 123456789.</div>
+      <div class="field"><label>Full Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Father's Name <span class="auto-tag">Auto</span></label><input type="text" value="Ramesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Caste Category</label><select><option>OBC</option><option>SC</option><option>ST</option></select></div>
+      <div class="field"><label>Sub-caste</label><input type="text" placeholder="Enter sub-caste"></div>
+      <div class="field"><label>Purpose</label><select><option>Employment</option><option>Scholarship</option><option>Admission</option><option>Other</option></select></div>
+    </div>
+    <div class="card">
+      <h3>Documents</h3>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Aadhaar Card</div><div style="font-size:11px;color:var(--ink3)">PDF / Image · max 5 MB</div></div>
+      <div class="upbox" style="margin-top:8px"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Ration Card / Previous Caste Cert</div><div style="font-size:11px;color:var(--ink3)">PDF / Image · max 5 MB</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>7–15 working days</strong> · Approval authority: SDM</div>
+    <button class="btn btn-p" onclick="go('s-cert-review')">Next — Review →</button>
+    <button class="btn btn-s" style="margin-top:8px" onclick="go('s-cert-list')">Cancel</button>
+  </div></div>
+</div>
+
+<!-- ════ INCOME CERT ════ -->
+<div id="s-cert-income" class="scr">
+  <div class="cert-header"><div class="icon-big">💰</div><div><div style="color:#fff;font-size:16px;font-weight:700">Income Certificate</div><div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">Annual family income proof</div></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Applicant Details</h3>
+      <div class="ib ib-blue" style="margin-bottom:10px">🪪 Auto-filled from Samagra ID 123456789.</div>
+      <div class="field"><label>Full Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Annual Family Income (₹)</label><input type="number" placeholder="Enter annual income"></div>
+      <div class="field"><label>Source of Income</label><select><option>Employment (Private)</option><option>Employment (Govt)</option><option>Agriculture</option><option>Business</option><option>Other</option></select></div>
+      <div class="field"><label>Purpose</label><select><option>Scholarship</option><option>Loan</option><option>BPL Card</option><option>Admission</option><option>Other</option></select></div>
+    </div>
+    <div class="card">
+      <h3>Documents</h3>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Aadhaar Card</div></div>
+      <div class="upbox" style="margin-top:8px"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Salary Slip / Bank Statement</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>7–15 days</strong> · Approval: SDM / Tehsildar</div>
+    <button class="btn btn-p" onclick="go('s-cert-review')">Next — Review →</button>
+    <button class="btn btn-s" style="margin-top:8px" onclick="go('s-cert-list')">Cancel</button>
+  </div></div>
+</div>
+
+<!-- ════ DOMICILE CERT ════ -->
+<div id="s-cert-domicile" class="scr">
+  <div class="cert-header"><div class="icon-big">🏠</div><div><div style="color:#fff;font-size:16px;font-weight:700">Domicile Certificate</div><div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">MP residence proof</div></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Applicant Details</h3>
+      <div class="ib ib-blue" style="margin-bottom:10px">🪪 Auto-filled from Aadhaar / Samagra.</div>
+      <div class="field"><label>Full Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Address in MP <span class="auto-tag">Auto</span></label><input type="text" value="Plot 24, Civil Lines, Bhopal" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Residing in MP since</label><input type="text" placeholder="e.g. 1982"></div>
+      <div class="field"><label>Purpose</label><select><option>Employment</option><option>Scholarship</option><option>Admission</option><option>Other</option></select></div>
+    </div>
+    <div class="card">
+      <h3>Documents</h3>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Aadhaar Card (MP Address)</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>7–15 days</strong> · Approval: SDM</div>
+    <button class="btn btn-p" onclick="go('s-cert-review')">Next — Review →</button>
+    <button class="btn btn-s" style="margin-top:8px" onclick="go('s-cert-list')">Cancel</button>
+  </div></div>
+</div>
+
+<!-- ════ MARRIAGE CERT ════ -->
+<div id="s-cert-marriage" class="scr">
+  <div class="cert-header"><div class="icon-big">💒</div><div><div style="color:#fff;font-size:16px;font-weight:700">Marriage Certificate</div><div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">Registered marriage proof</div></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Marriage Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Husband Details</h3>
+      <div class="field"><label>Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Aadhaar <span class="auto-tag">Auto</span></label><input type="text" value="XXXX XXXX 8421" readonly style="background:#f0f0f0"></div>
+    </div>
+    <div class="card">
+      <h3>Wife Details</h3>
+      <div class="field"><label>Name</label><input type="text" placeholder="Wife's full name"></div>
+      <div class="field"><label>Aadhaar Number</label><input type="text" placeholder="XXXX XXXX XXXX"></div>
+    </div>
+    <div class="card">
+      <h3>Marriage Details</h3>
+      <div class="field"><label>Date of Marriage</label><input type="date"></div>
+      <div class="field"><label>Place of Marriage</label><input type="text" placeholder="City, Venue"></div>
+      <div class="field"><label>Religion</label><select><option>Hindu</option><option>Muslim</option><option>Christian</option><option>Other</option></select></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>15–30 days</strong> · Approval: Registrar of Marriages</div>
+    <button class="btn btn-p" onclick="go('s-cert-review')">Next — Documents →</button>
+    <button class="btn btn-s" style="margin-top:8px" onclick="go('s-cert-list')">Cancel</button>
+  </div></div>
+</div>
+
+<!-- ════ BIRTH CERT ════ -->
+<div id="s-birth-cert" class="scr">
+  <div class="cert-header"><div class="icon-big">🍼</div><div><div style="color:#fff;font-size:16px;font-weight:700">Birth Certificate</div><div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">Date of birth proof</div></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Child Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Child Information</h3>
+      <div class="field"><label>Child's Name</label><input type="text" placeholder="Full name"></div>
+      <div class="field"><label>Gender</label><select><option>Male</option><option>Female</option><option>Other</option></select></div>
+      <div class="field"><label>Date of Birth</label><input type="date"></div>
+      <div class="field"><label>Place of Birth</label><input type="text" placeholder="Hospital name & city"></div>
+    </div>
+    <div class="card">
+      <h3>Parent Details</h3>
+      <div class="field"><label>Father's Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Mother's Name</label><input type="text" placeholder="Mother's full name"></div>
+    </div>
+    <div class="card">
+      <h3>Documents</h3>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Hospital Discharge / Birth Slip</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>3–7 days</strong> · Approval: Municipal Registrar</div>
+    <button class="btn btn-p" onclick="go('s-cert-review')">Next — Review →</button>
+    <button class="btn btn-s" style="margin-top:8px" onclick="go('s-cert-list')">Cancel</button>
+  </div></div>
+</div>
+
+<!-- ════ DEATH CERT ════ -->
+<div id="s-death-cert" class="scr">
+  <div class="cert-header" style="background:var(--blue)"><div class="icon-big">📜</div><div><div style="color:#fff;font-size:16px;font-weight:700">Death Certificate</div><div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">Deceased person registration</div></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Deceased Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Deceased Information</h3>
+      <div class="field"><label>Full Name</label><input type="text" placeholder="Deceased person's name"></div>
+      <div class="field"><label>Gender</label><select><option>Male</option><option>Female</option></select></div>
+      <div class="field"><label>Date of Death</label><input type="date"></div>
+      <div class="field"><label>Place of Death</label><input type="text" placeholder="Hospital / Home address"></div>
+      <div class="field"><label>Cause of Death</label><input type="text" placeholder="As per doctor's report"></div>
+    </div>
+    <div class="card">
+      <h3>Informant Details</h3>
+      <div class="field"><label>Your Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Relationship to Deceased</label><select><option>Son</option><option>Daughter</option><option>Spouse</option><option>Parent</option><option>Other</option></select></div>
+    </div>
+    <div class="card">
+      <h3>Documents</h3>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Hospital Death Certificate / Doctor's Report</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>3–7 days</strong></div>
+    <button class="btn btn-p" onclick="go('s-cert-review')">Next — Review →</button>
+    <button class="btn btn-s" style="margin-top:8px" onclick="go('s-cert-list')">Cancel</button>
+  </div></div>
+</div>
+
+<!-- ════ CHARACTER CERT (POLICE NOC) ════ -->
+<div id="s-cert-character" class="scr">
+  <div class="cert-header"><div class="icon-big">🛂</div><div><div style="color:#fff;font-size:16px;font-weight:700">Character Certificate</div><div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">Police clearance / NOC</div></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Applicant Details</h3>
+      <div class="ib ib-blue" style="margin-bottom:10px">🪪 Auto-filled from Aadhaar.</div>
+      <div class="field"><label>Full Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Address <span class="auto-tag">Auto</span></label><input type="text" value="Plot 24, Civil Lines, Bhopal" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Purpose</label><select><option>Employment</option><option>Passport / Visa</option><option>Admission</option><option>Tender / Contract</option><option>Other</option></select></div>
+    </div>
+    <div class="card">
+      <h3>Documents</h3>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Aadhaar Card</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>10–15 days</strong> · Approval: SP / DSP Office</div>
+    <button class="btn btn-p" onclick="go('s-cert-review')">Next — Review →</button>
+    <button class="btn btn-s" style="margin-top:8px" onclick="go('s-cert-list')">Cancel</button>
+  </div></div>
+</div>
+
+<!-- ════ OBC-NCL CERT ════ -->
+<div id="s-cert-obc-ncl" class="scr">
+  <div class="cert-header"><div class="icon-big">📋</div><div><div style="color:#fff;font-size:16px;font-weight:700">OBC-NCL Certificate</div><div style="color:rgba(255,255,255,.75);font-size:12px;margin-top:2px">Non-Creamy Layer certificate</div></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Applicant Details</h3>
+      <div class="field"><label>Full Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Caste <span class="auto-tag">Auto</span></label><input type="text" value="OBC" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Annual Family Income (₹)</label><input type="number" placeholder="Must be below ₹8 lakh for NCL"></div>
+      <div class="field"><label>Purpose</label><select><option>Central Govt Job</option><option>State Govt Job</option><option>Admission</option><option>Other</option></select></div>
+    </div>
+    <div class="card">
+      <h3>Documents</h3>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Aadhaar + OBC Caste Certificate</div></div>
+      <div class="upbox" style="margin-top:8px"><div style="font-size:22px;margin-bottom:4px">📄</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Income Proof (Salary Slip / ITR)</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Processing: <strong>7–15 days</strong> · Approval: SDM</div>
+    <button class="btn btn-p" onclick="go('s-cert-review')">Next — Review →</button>
+    <button class="btn btn-s" style="margin-top:8px" onclick="go('s-cert-list')">Cancel</button>
+  </div></div>
+</div>
+
+<!-- ════ CERT REVIEW (shared) ════ -->
+<div id="s-cert-review" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="history.go(-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Review & Submit</h2></div></div>
+  <div class="steps"><div class="sd done">✓</div><div class="sl done"></div><div class="sd done">✓</div><div class="sl done"></div><div class="sd act">3</div><span class="step-label">Step 3 — Review</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Review Your Application</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Applicant</span><span style="font-size:13px;font-weight:600">Rajesh Kumar</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Mobile</span><span style="font-size:13px;font-weight:600">+91 98765 43210</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Samagra ID</span><span style="font-size:13px;font-weight:600">12345 6789</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Documents</span><span style="font-size:13px;font-weight:600">1 uploaded</span></div>
+      </div>
+    </div>
+    <div class="ib ib-blue" style="margin-bottom:16px">⏱️ Processing: <strong>7–15 working days</strong>. SMS updates at every stage. Approval authority: SDM.</div>
+    <button class="btn btn-p" style="margin-bottom:8px" onclick="go('s-success-app')">Submit Application</button>
+    <button class="btn btn-s" onclick="history.go(-1)">← Back & Edit</button>
+  </div></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     POLICE SERVICES
+════════════════════════════════════════ -->
+<div id="s-police" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>Police Services</h2><div class="sub">File · Track · Enquire</div></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div></div>
+  <div class="body">
+    <div class="slabel">Emergency</div>
+    <div class="row" onclick="go('s-nearest-police')"><div class="ri" style="background:#ffe8e0">📍</div><div class="rinfo"><h4>Nearest Police Station</h4><p>Live distance · Call · Directions</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-women-safety')"><div class="ri" style="background:var(--pink-light)">🆘</div><div class="rinfo"><h4>Women Safety / SOS</h4><p>Emergency alert & complaints</p></div><div class="chev"></div></div>
+    <div class="slabel">Services</div>
+    <div class="row" onclick="go('s-police-fir')"><div class="ri" style="background:var(--blue-light)">📄</div><div class="rinfo"><h4>File FIR / Complaint</h4><p>Online police complaint</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-police-fir-status')"><div class="ri" style="background:var(--green-light)">🔍</div><div class="rinfo"><h4>FIR Status Check</h4><p>Track existing FIR</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-cert-character')"><div class="ri" style="background:var(--teal-light)">🛂</div><div class="rinfo"><h4>Character Certificate</h4><p>Police clearance / NOC</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-police-noc')"><div class="ri" style="background:var(--amber-light)">📢</div><div class="rinfo"><h4>Event Permission / NOC</h4><p>Rally, meeting, procession</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-police-lost')"><div class="ri" style="background:#fef9c3">🔎</div><div class="rinfo"><h4>Lost & Found</h4><p>Report or search lost items</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-police-verify')"><div class="ri" style="background:#e0e7ff)">✅</div><div class="rinfo"><h4>Tenant / Employee Verification</h4><p>Background verification request</p></div><div class="chev"></div></div>
+    <div class="slabel">Helplines</div>
+    <div style="margin:4px 16px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Police Emergency — 100</div></div><div style="background:var(--red-light);color:var(--red);font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;cursor:pointer">📞 Call</div></div>
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Women Helpline — 1090</div></div><div style="background:var(--pink-light);color:var(--pink);font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;cursor:pointer">📞 Call</div></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">MP Police Control Room — 0755-2443333</div></div><div style="background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;cursor:pointer">📞 Call</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ POLICE FIR ════ -->
+<div id="s-police-fir" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-police')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>File Police Complaint</h2></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Incident Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="loc-pill"><span class="lic">📌</span><div class="ltxt">Location auto-fetched: Civil Lines, Bhopal — 462001</div></div>
+    <div class="card">
+      <h3>Complaint Details</h3>
+      <div class="field"><label>Type of Incident</label><select><option>Theft</option><option>Assault</option><option>Fraud / Cheating</option><option>Cybercrime</option><option>Property Dispute</option><option>Domestic Violence</option><option>Other</option></select></div>
+      <div class="field"><label>Date of Incident</label><input type="date"></div>
+      <div class="field"><label>Location of Incident</label><input type="text" placeholder="Where did it happen?"></div>
+      <div class="field"><label>Description</label><textarea rows="4" placeholder="Describe the incident in detail…" style="resize:none"></textarea></div>
+    </div>
+    <div class="card">
+      <h3>Evidence (Optional)</h3>
+      <div class="upbox"><div style="font-size:22px;margin-bottom:4px">📷</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Upload Photo / Screenshot / Document</div><div style="font-size:11px;color:var(--ink3)">Max 10 MB</div></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Complaint reviewed within <strong>24 hours</strong>. Routed to nearest police station.</div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Complaint</button>
+  </div></div>
+</div>
+
+<!-- ════ FIR STATUS ════ -->
+<div id="s-police-fir-status" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-police')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>FIR Status Check</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Search by FIR Number</h3>
+      <div class="field"><label>Police Station</label><select><option>Civil Lines, Bhopal</option><option>TT Nagar, Bhopal</option><option>Hanumanganj, Bhopal</option></select></div>
+      <div class="field"><label>FIR Number</label><input type="text" placeholder="e.g. 123/2026"></div>
+      <div class="field"><label>Year</label><select><option>2026</option><option>2025</option><option>2024</option></select></div>
+    </div>
+    <button class="btn btn-p" onclick="go('s-fir-result')">Search FIR</button>
+    <div class="slabel" style="padding-left:0;margin-top:12px">My Filed Complaints</div>
+    <div style="background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden;cursor:pointer" onclick="go('s-fir-result')">
+      <div style="padding:12px 14px"><div style="font-size:13px;font-weight:600">Theft at Civil Lines</div><div style="font-size:11px;color:var(--ink3);margin-top:2px">FIR: 094/2026 · Civil Lines PS · 10 Mar 2026</div><span class="pill pill-r" style="margin-top:6px;display:inline-block">Under Investigation</span></div>
+    </div>
+  </div></div>
+</div>
+
+<!-- ════ FIR RESULT ════ -->
+<div id="s-fir-result" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-police-fir-status')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>FIR Status</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card" style="background:var(--blue-xlight);border-color:#b6ccf8">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:11px;color:var(--blue);font-weight:600">FIR NUMBER</div><div style="font-size:15px;font-weight:700;font-family:monospace">094/2026</div></div><span class="pill pill-r">Under Investigation</span></div>
+      <div style="font-size:13px;color:var(--ink2);margin-top:8px">Theft at Civil Lines Market</div>
+      <div style="font-size:11px;color:var(--ink3)">Civil Lines Police Station · Filed: 10 Mar 2026</div>
+    </div>
+    <div class="card">
+      <h3>Investigation Timeline</h3>
+      <div class="tl-wrap">
+        <div class="tl"><div class="tl-dot d"></div><div class="tn">FIR Registered</div><div class="td">10 Mar 2026, 3:00 PM</div></div>
+        <div class="tl"><div class="tl-dot d"></div><div class="tn">IO Assigned — SI Pradeep Kumar</div><div class="td">11 Mar 2026</div></div>
+        <div class="tl"><div class="tl-dot a"></div><div class="tn">Under Investigation — Evidence Collection</div><div class="td">15 Mar 2026 onwards</div></div>
+        <div class="tl"><div class="tl-dot t"></div><div class="tn">Charge Sheet / Closure Report</div><div class="td">Pending</div></div>
+      </div>
+    </div>
+    <div class="ib ib-blue">Contact IO: SI Pradeep Kumar · 0755-2441100 Extn. 34</div>
+    <button class="btn btn-s" onclick="go('s-police')">Back to Police Services</button>
+  </div></div>
+</div>
+
+<!-- ════ POLICE NOC ════ -->
+<div id="s-police-noc" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-police')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Event Permission / NOC</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Event Details</h3>
+      <div class="field"><label>Event Type</label><select><option>Public Meeting</option><option>Rally / Procession</option><option>Cultural Event</option><option>Religious Event</option><option>Sports Event</option></select></div>
+      <div class="field"><label>Date</label><input type="date"></div>
+      <div class="field"><label>Time</label><input type="time"></div>
+      <div class="field"><label>Expected Attendees</label><input type="number" placeholder="e.g. 500"></div>
+      <div class="field"><label>Venue / Route</label><input type="text" placeholder="Location or procession route"></div>
+      <div class="field"><label>Organizer Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh Kumar" readonly style="background:#f0f0f0"></div>
+    </div>
+    <div class="ib ib-amber">⚠️ Apply at least <strong>7 days</strong> before the event. Approval: SP/DSP.</div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Application</button>
+  </div></div>
+</div>
+
+<!-- ════ POLICE LOST & FOUND ════ -->
+<div id="s-police-lost" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-police')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Lost & Found</h2></div></div>
+  <div class="tabs"><button class="tab act" onclick="switchTab(this,'tab-lost-report')">Report Lost</button><button class="tab" onclick="switchTab(this,'tab-lost-search')">Search Found Items</button></div>
+  <div class="body">
+    <div id="tab-lost-report"><div style="padding:16px">
+      <div class="card">
+        <h3>Report Lost Item</h3>
+        <div class="field"><label>Item Type</label><select><option>Mobile Phone</option><option>Wallet / Documents</option><option>Vehicle</option><option>Jewellery</option><option>Other</option></select></div>
+        <div class="field"><label>Item Description</label><textarea rows="2" style="resize:none" placeholder="Brand, colour, serial number…"></textarea></div>
+        <div class="field"><label>Last seen location</label><input type="text" placeholder="Where was it last seen?"></div>
+        <div class="field"><label>Date Lost</label><input type="date"></div>
+      </div>
+      <button class="btn btn-p" onclick="go('s-success-app')">Report Lost Item</button>
+    </div></div>
+    <div id="tab-lost-search" style="display:none"><div style="padding:16px">
+      <div class="card">
+        <h3>Search Found Items</h3>
+        <div class="field"><label>Category</label><select><option>Mobile Phone</option><option>Wallet</option><option>Vehicle</option><option>Documents</option><option>Other</option></select></div>
+        <div class="field"><label>Police Station</label><select><option>All Stations</option><option>Civil Lines</option><option>TT Nagar</option></select></div>
+      </div>
+      <button class="btn btn-p">Search Items</button>
+      <div class="ib ib-blue" style="margin-top:12px">Found items are held at the respective police station for 90 days.</div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ════ POLICE VERIFY ════ -->
+<div id="s-police-verify" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-police')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Tenant / Employee Verification</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>Person to Verify</h3>
+      <div class="field"><label>Full Name</label><input type="text" placeholder="Person's name"></div>
+      <div class="field"><label>Aadhaar Number</label><input type="text" placeholder="XXXX XXXX XXXX"></div>
+      <div class="field"><label>Address</label><input type="text" placeholder="Permanent address"></div>
+      <div class="field"><label>Verification Type</label><select><option>Tenant</option><option>Employee / Domestic Worker</option><option>Other</option></select></div>
+    </div>
+    <div class="ib ib-blue">⏱️ Verification completed within <strong>7 days</strong>. Report sent via SMS.</div>
+    <button class="btn btn-p" onclick="go('s-success-app')">Submit Request</button>
+  </div></div>
+</div>
+
+<!-- ════ NEAREST POLICE ════ -->
+<div id="s-nearest-police" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-police')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div><h2>Nearest Police Stations</h2><div class="sub">📍 Civil Lines, Bhopal</div></div></div></div>
+  <div class="body">
+    <div style="margin:12px 16px;background:var(--white);border-radius:14px;border:2px solid var(--blue);overflow:hidden">
+      <div style="background:var(--blue-xlight);padding:8px 14px;display:flex;justify-content:space-between"><div style="font-size:11px;font-weight:700;color:var(--blue)">NEAREST · 0.8 km</div><span class="pill pill-d">Open 24/7</span></div>
+      <div style="padding:14px">
+        <div style="font-size:15px;font-weight:700">Civil Lines Police Station</div>
+        <div style="font-size:12px;color:var(--ink3);margin-top:3px">Railway Station Rd, Bhopal — 462001</div>
+        <div style="font-size:12px;color:var(--ink3)">SHO: Inspector R.K. Sharma · 0755-2441100</div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <div style="flex:1;background:var(--red-light);color:var(--red);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer">📞 Call</div>
+          <div style="flex:1;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer">🗺️ Directions</div>
+          <div style="flex:1;background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer" onclick="go('s-police-fir')">📝 File</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin:0 16px 10px;background:var(--white);border-radius:14px;border:1px solid var(--border);padding:14px">
+      <div style="display:flex;justify-content:space-between"><div style="font-size:14px;font-weight:700">TT Nagar Police Station</div><div style="font-size:12px;color:var(--ink3)">2.1 km</div></div>
+      <div style="font-size:12px;color:var(--ink3);margin-top:2px">TT Nagar, Bhopal — 462003 · 0755-2660100</div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:7px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">📞 Call</div>
+        <div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:7px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">🗺️ Map</div>
+        <div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:7px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)" onclick="go('s-police-fir')">📝 File</div>
+      </div>
+    </div>
+    <div style="margin:0 16px 20px;background:var(--white);border-radius:14px;border:1px solid var(--border);padding:14px">
+      <div style="display:flex;justify-content:space-between"><div style="font-size:14px;font-weight:700">Hanumanganj Police Station</div><div style="font-size:12px;color:var(--ink3)">3.4 km</div></div>
+      <div style="font-size:12px;color:var(--ink3);margin-top:2px">Hanumanganj, Bhopal</div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:7px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">📞 Call</div>
+        <div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:7px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">🗺️ Map</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     WOMEN SAFETY
+════════════════════════════════════════ -->
+<div id="s-women-safety" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#be185d,#9f1239)">
+    <div class="tbar-row"><button class="back" onclick="go('s-home')" style="background:rgba(255,255,255,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>Women Safety</h2><div class="sub">महिला सुरक्षा · 24×7</div></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div>
+  </div>
+  <div class="body">
+    <div style="padding:20px 16px;text-align:center;background:var(--white);border-bottom:1px solid var(--border)">
+      <div style="font-size:13px;color:var(--ink3);margin-bottom:14px">Press & hold 3 seconds to send SOS alert</div>
+      <div style="width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,#be185d,#9f1239);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;cursor:pointer;box-shadow:0 8px 32px rgba(190,24,93,.4)" onclick="go('s-sos-sent')">
+        <div><div style="font-size:30px">🆘</div><div style="color:#fff;font-size:15px;font-weight:700;margin-top:3px">SOS</div><div style="color:rgba(255,255,255,.7);font-size:10px">Hold 3 sec</div></div>
+      </div>
+      <div style="font-size:12px;color:var(--ink3)">Sends GPS location to 3 contacts + nearest police</div>
+    </div>
+    <div class="slabel">Safety Services</div>
+    <div class="row" onclick="go('s-women-complaint')"><div class="ri" style="background:var(--pink-light)">📝</div><div class="rinfo"><h4>File Safety Complaint</h4><p>Harassment, stalking, threat</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-nearest-police-women')"><div class="ri" style="background:#ffe8e0">🚔</div><div class="rinfo"><h4>Nearest Police Station</h4><p>Live distance · Directions · Contact</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:var(--purple-light)">📞</div><div class="rinfo"><h4>Women Helpline — 181</h4><p>State helpline, 24×7 free</p></div><div style="background:var(--pink-light);color:var(--pink);font-size:12px;font-weight:700;padding:6px 13px;border-radius:20px;cursor:pointer;white-space:nowrap">Call</div></div>
+    <div class="row"><div class="ri" style="background:var(--teal-light)">📍</div><div class="rinfo"><h4>Share Live Location</h4><p>Send to trusted contacts</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-track-complaint')"><div class="ri" style="background:var(--amber-light)">🔍</div><div class="rinfo"><h4>Track My Complaint</h4></div><div class="chev"></div></div>
+    <div class="slabel">Emergency Numbers</div>
+    <div style="margin:4px 16px 20px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Police — 100</div></div><div style="background:var(--red-light);color:var(--red);font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;cursor:pointer">📞 Call</div></div>
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Nirbhaya — 1090</div></div><div style="background:var(--pink-light);color:var(--pink);font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;cursor:pointer">📞 Call</div></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Ambulance — 108</div></div><div style="background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;cursor:pointer">📞 Call</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ NEAREST POLICE (Women Safety context) ════ -->
+<div id="s-nearest-police-women" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#be185d,#9f1239)"><div class="tbar-row"><button class="back" onclick="go('s-women-safety')" style="background:rgba(255,255,255,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div><h2>Nearest Police Stations</h2><div class="sub">📍 Civil Lines, Bhopal</div></div></div></div>
+  <div class="body">
+    <div style="margin:12px 16px;background:var(--white);border-radius:14px;border:2px solid var(--pink);overflow:hidden">
+      <div style="background:#fce7f3;padding:8px 14px;display:flex;justify-content:space-between"><div style="font-size:11px;font-weight:700;color:var(--pink)">NEAREST · 0.8 km</div><span class="pill pill-d">Open 24/7</span></div>
+      <div style="padding:14px">
+        <div style="font-size:15px;font-weight:700">Civil Lines Police Station</div>
+        <div style="font-size:12px;color:var(--ink3);margin-top:2px">Railway Station Rd, Bhopal — 462001</div>
+        <div style="font-size:12px;color:var(--ink3)">SHO: Inspector R.K. Sharma · 0755-2441100</div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <div style="flex:1;background:var(--red-light);color:var(--red);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer">📞 Call</div>
+          <div style="flex:1;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer">🗺️ Directions</div>
+          <div style="flex:1;background:var(--pink-light);color:var(--pink);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer" onclick="go('s-women-complaint')">📝 File</div>
+        </div>
+      </div>
+    </div>
+    <div style="margin:0 16px 20px;background:var(--white);border-radius:14px;border:1px solid var(--border);padding:14px">
+      <div style="display:flex;justify-content:space-between"><div style="font-size:14px;font-weight:700">TT Nagar Police Station</div><div style="font-size:12px;color:var(--ink3)">2.1 km</div></div>
+      <div style="font-size:12px;color:var(--ink3);margin-top:2px">TT Nagar, Bhopal</div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:7px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">📞 Call</div>
+        <div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:7px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">🗺️ Map</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SOS SENT ════ -->
+<div id="s-sos-sent" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#be185d,#9f1239)"><div class="tbar-row"><button class="back" onclick="go('s-women-safety')" style="background:rgba(255,255,255,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>🆘 SOS Alert Sent</h2></div></div>
+  <div class="body" style="background:#fff1f2">
+    <div style="padding:20px 16px;text-align:center">
+      <div style="width:80px;height:80px;border-radius:50%;background:var(--pink-light);border:3px solid #fda4af;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:32px">🆘</div>
+      <div style="font-size:18px;font-weight:700;color:var(--red)">Alert Sent!</div>
+      <div style="font-size:13px;color:var(--ink3);margin-top:6px;line-height:1.6">Your GPS location sent to contacts + nearest police station</div>
+    </div>
+    <div style="margin:0 16px 12px;background:var(--white);border-radius:12px;border:1px solid #fecaca;overflow:hidden">
+      <div style="padding:8px 14px;background:#fff1f2;font-size:11px;font-weight:700;color:var(--red);text-transform:uppercase">Alert sent to</div>
+      <div style="padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Civil Lines Police Station</div><div style="font-size:11px;color:var(--ink3)">0.8 km away</div></div><span class="pill pill-d">✓ Sent</span></div>
+      <div style="padding:10px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Priya (Sister)</div><div style="font-size:11px;color:var(--ink3)">+91 98765 11111</div></div><span class="pill pill-d">✓ Sent</span></div>
+      <div style="padding:10px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Ramesh (Father)</div><div style="font-size:11px;color:var(--ink3)">+91 98765 22222</div></div><span class="pill pill-d">✓ Sent</span></div>
+    </div>
+    <div style="padding:0 16px 24px">
+      <button class="btn btn-pink" style="margin-bottom:8px">📞 Call Police — 100</button>
+      <button class="btn btn-s" onclick="go('s-women-safety')">Back to Safety Centre</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════ WOMEN COMPLAINT ════ -->
+<div id="s-women-complaint" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#be185d,#9f1239)"><div class="tbar-row"><button class="back" onclick="go('s-women-safety')" style="background:rgba(255,255,255,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>File Safety Complaint</h2></div></div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 — Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card">
+      <h3>📍 Auto-detected Location</h3>
+      <div class="loc-pill"><span class="lic">📌</span><div class="ltxt">Civil Lines, Bhopal — 462001 (GPS active)</div></div>
+      <div class="field"><label>Incident Location (if different)</label><input type="text" placeholder="Street / landmark"></div>
+    </div>
+    <div class="card">
+      <h3>Complaint Details</h3>
+      <div class="field"><label>Type of Incident</label><select><option>Harassment</option><option>Stalking</option><option>Eve teasing</option><option>Domestic violence</option><option>Threat</option><option>Other</option></select></div>
+      <div class="field"><label>Description</label><textarea rows="3" style="resize:none" placeholder="Brief description…"></textarea></div>
+    </div>
+    <div class="card">
+      <h3>Evidence (Optional)</h3>
+      <div class="upbox"><div style="font-size:24px;margin-bottom:4px">📷</div><div style="font-size:13px;font-weight:600;color:var(--ink2)">Capture / upload photo</div><div style="font-size:11px;color:var(--ink3)">JPEG / PNG · max 10 MB</div></div>
+    </div>
+    <div class="ib ib-pink">🔒 Identity kept confidential. Routed to nearest police station.</div>
+    <button class="btn btn-pink" style="margin-top:10px" onclick="go('s-women-review')">Next — Review →</button>
+  </div></div>
+</div>
+
+<!-- ════ WOMEN REVIEW ════ -->
+<div id="s-women-review" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#be185d,#9f1239)"><div class="tbar-row"><button class="back" onclick="go('s-women-complaint')" style="background:rgba(255,255,255,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Review & Submit</h2></div></div>
+  <div class="steps"><div class="sd done">✓</div><div class="sl done"></div><div class="sd done">✓</div><div class="sl done"></div><div class="sd act">3</div><span class="step-label">Step 3 — Submit</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card"><h3>Review</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Type</span><span style="font-size:13px;font-weight:600">Harassment</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Location</span><span style="font-size:13px;font-weight:600">Civil Lines, Bhopal</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Photo</span><span style="font-size:13px;font-weight:600">1 uploaded</span></div>
+      </div>
+    </div>
+    <div class="ib ib-blue" style="margin-bottom:16px">⏱️ Complaint reviewed within <strong>24 hours</strong>. SMS updates on every action.</div>
+    <button class="btn btn-pink" style="margin-bottom:8px" onclick="go('s-sos-sent')">Submit Complaint</button>
+    <button class="btn btn-s" onclick="go('s-women-complaint')">← Back & Edit</button>
+  </div></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SWACHH BHARAT
+════════════════════════════════════════ -->
+<div id="s-swachh" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#065f46,#047857)">
+    <div class="tbar-row"><button class="back" onclick="go('s-home')" style="background:rgba(255,255,255,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>Swachh Bharat</h2><div class="sub">स्वच्छ भारत · Photo complaint</div></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div>
+  </div>
+  <div class="steps"><div class="sd act">1</div><div class="sl"></div><div class="sd todo">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 1 of 3 — Photo</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card"><h3>📸 Capture Unhygienic Area</h3>
+      <div class="photo-frame" onclick="go('s-swachh-step2')"><div style="text-align:center"><div style="font-size:44px;margin-bottom:8px">📷</div><div style="color:rgba(255,255,255,.85);font-size:13px;font-weight:600">Tap to capture photo</div><div style="color:rgba(255,255,255,.5);font-size:11px;margin-top:4px">Photo auto-tags your GPS location</div></div></div>
+      <div style="display:flex;gap:8px"><button class="btn btn-p" style="font-size:13px;padding:10px" onclick="go('s-swachh-step2')">📷 Camera</button><button class="btn btn-s" style="font-size:13px;padding:10px" onclick="go('s-swachh-step2')">📂 Gallery</button></div>
+    </div>
+    <div class="ib ib-green">💡 Take a clear photo — garbage, drain, filth. GPS location is auto-fetched.</div>
+  </div></div>
+</div>
+
+<div id="s-swachh-step2" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#065f46,#047857)"><div class="tbar-row"><button class="back" onclick="go('s-swachh')" style="background:rgba(255,255,255,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Complaint Details</h2></div></div>
+  <div class="steps"><div class="sd done">✓</div><div class="sl done"></div><div class="sd act">2</div><div class="sl"></div><div class="sd todo">3</div><span class="step-label">Step 2 of 3 — Details</span></div>
+  <div class="body"><div style="padding:16px">
+    <div style="background:#1a2e1a;border-radius:12px;height:130px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;position:relative"><div style="text-align:center"><div style="font-size:30px">🗑️</div><div style="color:rgba(255,255,255,.7);font-size:12px;margin-top:4px">Photo captured</div></div><div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.6);border-radius:6px;padding:3px 8px;font-size:10px;color:#fff">✅ GPS Tagged</div></div>
+    <div class="loc-pill"><span class="lic">📌</span><div><div style="font-size:12px;font-weight:600;color:#065f46">Auto-fetched Location</div><div style="font-size:11px;color:#047857">Civil Lines Rd, Near Bus Stop, Bhopal — 462001</div></div></div>
+    <div class="card"><h3>Complaint Details</h3>
+      <div class="field"><label>Type of Issue</label><select><option selected>Garbage not collected</option><option>Open drain / nullah</option><option>Stagnant water</option><option>Public toilet issue</option><option>Animal waste</option><option>Other</option></select></div>
+      <div class="field"><label>Ward <span class="auto-tag">Auto-filled</span></label><input type="text" value="Ward 12 — Civil Lines" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Additional Description</label><textarea rows="2" style="resize:none" placeholder="Extra details…"></textarea></div>
+    </div>
+    <div class="ib ib-blue" style="margin-bottom:12px">⏱️ Expected resolution: <strong>3–5 working days</strong> · SMS updates</div>
+    <button class="btn btn-green" onclick="go('s-swachh-review')">Next — Review →</button>
+  </div></div>
+</div>
+
+<div id="s-swachh-review" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#065f46,#047857)"><div class="tbar-row"><button class="back" onclick="go('s-swachh-step2')" style="background:rgba(255,255,255,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Review & Submit</h2></div></div>
+  <div class="steps"><div class="sd done">✓</div><div class="sl done"></div><div class="sd done">✓</div><div class="sl done"></div><div class="sd act">3</div><span class="step-label">Step 3 of 3 — Submit</span></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card"><h3>Review Complaint</h3>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Issue</span><span style="font-size:13px;font-weight:600">Garbage not collected</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Location</span><span style="font-size:13px;font-weight:600">Civil Lines, Bhopal</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Ward</span><span style="font-size:13px;font-weight:600">Ward 12</span></div>
+        <div style="display:flex;justify-content:space-between"><span style="font-size:12px;color:var(--ink3)">Photo</span><span style="font-size:13px;font-weight:600">1 attached ✅</span></div>
+      </div>
+    </div>
+    <div class="ib ib-green" style="margin-bottom:14px">✅ Sent to Ward 12 Officer. Expected action in 3–5 days.</div>
+    <button class="btn btn-green" style="margin-bottom:8px" onclick="go('s-swachh-success')">Submit Complaint</button>
+    <button class="btn btn-s" onclick="go('s-swachh-step2')">← Back & Edit</button>
+  </div></div>
+</div>
+
+<div id="s-swachh-success" class="scr">
+  <div class="tbar" style="background:linear-gradient(135deg,#065f46,#047857)"><div class="tbar-row"><div style="width:32px"></div><h2>Complaint Filed!</h2></div></div>
+  <div class="body" style="background:var(--white)">
+    <div class="success-wrap">
+      <div class="sc" style="background:var(--emerald-light)"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#065f46" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div style="font-size:20px;font-weight:700">Complaint Registered!</div>
+      <div style="font-size:13px;color:var(--ink3);margin-top:7px;line-height:1.6">Sent to Ward 12 Officer. Expected action in 3–5 working days.</div>
+      <div class="ref-box" style="background:#d1fae5"><div style="font-size:12px;color:#065f46;font-weight:600">Complaint ID</div><div style="font-size:17px;font-weight:700;font-family:monospace;margin-top:3px">SBM/BPL/2026/004821</div><div style="font-size:12px;color:var(--ink3);margin-top:5px">Ward 12 · Civil Lines · 1 Apr 2026</div></div>
+      <div style="width:100%;display:flex;flex-direction:column;gap:8px">
+        <button class="btn btn-green" onclick="go('s-track-complaint')">Track Complaint</button>
+        <button class="btn btn-s" onclick="go('s-home')">Back to Home</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SCHEMES
+════════════════════════════════════════ -->
+<div id="s-schemes" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>Government Schemes</h2><div class="sub">Based on Samagra profile</div></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div></div>
+  <div class="tabs"><button class="tab act" onclick="switchTab(this,'tab-availed')">Availed (2)</button><button class="tab" onclick="switchTab(this,'tab-eligible')">Eligible (5)</button><button class="tab" onclick="switchTab(this,'tab-all')">All Schemes</button></div>
+  <div class="body">
+    <div id="tab-availed">
+      <div style="margin:12px 16px" class="ib ib-green">✅ 2 schemes linked to Samagra ID 123456789</div>
+      <div class="row"><div class="ri" style="background:var(--blue-light)">🏠</div><div class="rinfo"><h4>PM Awas Yojana</h4><p>Housing · ₹1,20,000 disbursed</p></div><span class="pill pill-d">Active</span></div>
+      <div class="row"><div class="ri" style="background:var(--green-light)">💊</div><div class="rinfo"><h4>Ayushman Bharat</h4><p>Health insurance · ₹5 lakh cover</p></div><span class="pill pill-d">Active</span></div>
+    </div>
+    <div id="tab-eligible" style="display:none">
+      <div style="margin:12px 16px" class="ib ib-amber">💡 5 more schemes — review and apply</div>
+      <div class="row"><div class="ri" style="background:#fef9c3">🌾</div><div class="rinfo"><h4>PM Kisan Samman Nidhi</h4><p>₹6,000/year for farmers</p></div><button style="font-size:11px;font-weight:700;background:var(--blue);color:#fff;border:none;border-radius:20px;padding:5px 12px;cursor:pointer;white-space:nowrap;font-family:var(--font)" onclick="go('s-cert-review')">Apply</button></div>
+      <div class="row"><div class="ri" style="background:#fce7f3">👧</div><div class="rinfo"><h4>Ladli Laxmi Yojana</h4><p>Financial support for girl child</p></div><button style="font-size:11px;font-weight:700;background:var(--blue);color:#fff;border:none;border-radius:20px;padding:5px 12px;cursor:pointer;white-space:nowrap;font-family:var(--font)">Apply</button></div>
+      <div class="row"><div class="ri" style="background:#e0e7ff">🎓</div><div class="rinfo"><h4>Mukhyamantri Medhavi</h4><p>Scholarship for merit students</p></div><button style="font-size:11px;font-weight:700;background:var(--blue);color:#fff;border:none;border-radius:20px;padding:5px 12px;cursor:pointer;white-space:nowrap;font-family:var(--font)">Apply</button></div>
+      <div class="row"><div class="ri" style="background:#d1fae5">🏪</div><div class="rinfo"><h4>Udyam Kranti Yojana</h4><p>Business loan for youth</p></div><button style="font-size:11px;font-weight:700;background:var(--blue);color:#fff;border:none;border-radius:20px;padding:5px 12px;cursor:pointer;white-space:nowrap;font-family:var(--font)">Apply</button></div>
+    </div>
+    <div id="tab-all" style="display:none">
+      <div style="padding:10px 16px"><input type="text" placeholder="Search schemes…" style="width:100%;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;outline:none;font-family:var(--font)"></div>
+      <div class="row"><div class="ri" style="background:var(--blue-light)">🏠</div><div class="rinfo"><h4>PM Awas Yojana</h4></div><span class="pill pill-d">Availed</span></div>
+      <div class="row"><div class="ri" style="background:var(--green-light)">💊</div><div class="rinfo"><h4>Ayushman Bharat</h4></div><span class="pill pill-d">Availed</span></div>
+      <div class="row"><div class="ri" style="background:#fef9c3">🌾</div><div class="rinfo"><h4>PM Kisan</h4></div><span class="pill pill-r">Eligible</span></div>
+      <div class="row"><div class="ri" style="background:#fce7f3">👧</div><div class="rinfo"><h4>Ladli Laxmi</h4></div><span class="pill pill-r">Eligible</span></div>
+      <div class="row"><div class="ri" style="background:#ffe8e0">🏥</div><div class="rinfo"><h4>MP Mukhyamantri Chiranjeevi</h4></div><span class="pill pill-p">Check</span></div>
+    </div>
+    <div style="height:16px"></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     LAND RECORDS
+════════════════════════════════════════ -->
+<div id="s-land" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Land Records</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card" style="background:var(--blue-xlight);border-color:#b6ccf8">
+      <div style="font-size:11px;color:var(--blue);font-weight:600">LINKED PLOT</div>
+      <div style="font-size:16px;font-weight:700;margin-top:3px">Plot 24, Civil Lines</div>
+      <div style="font-size:13px;color:var(--ink2)">Khasra No: 1421/3 · Area: 1,200 sq ft</div>
+      <div style="font-size:13px;color:var(--ink2)">Owner: Rajesh Kumar · District: Bhopal</div>
+      <div style="display:flex;gap:8px;margin-top:12px">
+        <div style="flex:1;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer">📄 Khatauni</div>
+        <div style="flex:1;background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer">🗺️ Bhu-Naksha</div>
+        <div style="flex:1;background:var(--orange-light);color:var(--orange);font-size:12px;font-weight:700;padding:8px;border-radius:8px;text-align:center;cursor:pointer">₹ Valuation</div>
+      </div>
+    </div>
+    <div class="slabel" style="padding-left:0">Services</div>
+    <div class="row"><div class="ri" style="background:var(--blue-light)">📋</div><div class="rinfo"><h4>Khasra / Khatauni</h4><p>View land ownership record</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:var(--green-light)">🗺️</div><div class="rinfo"><h4>Bhu-Naksha Map</h4><p>View plot on map</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:#fef9c3">⚖️</div><div class="rinfo"><h4>Land Valuation</h4><p>Circle rate & market value</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:#ffe8e0">⚠️</div><div class="rinfo"><h4>Land Dispute / Court Case</h4><p>Linked civil cases</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:#f5f3ff">🔄</div><div class="rinfo"><h4>Mutation / Transfer</h4><p>Transfer of ownership</p></div><div class="chev"></div></div>
+  </div></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     COMPLAINTS HUB
+════════════════════════════════════════ -->
+<div id="s-complaints" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>Complaints & Grievances</h2></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div></div>
+  <div class="body">
+    <div class="slabel">Raise Complaint</div>
+    <div class="row" onclick="go('s-swachh')"><div class="ri" style="background:#d1fae5">🧹</div><div class="rinfo"><h4>Swachh Bharat</h4><p>Garbage, drain, public toilet</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-women-complaint')"><div class="ri" style="background:var(--pink-light)">🆘</div><div class="rinfo"><h4>Women Safety</h4><p>Harassment, stalking, threat</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-police-fir')"><div class="ri" style="background:#ffe8e0">🚔</div><div class="rinfo"><h4>Police Complaint / FIR</h4></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-road-repair')"><div class="ri" style="background:#e0e7ff">🛣️</div><div class="rinfo"><h4>Road / Infrastructure</h4><p>Pothole, broken footpath</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-street-light')"><div class="ri" style="background:#fef9c3">💡</div><div class="rinfo"><h4>Street Light</h4><p>Broken lights, outage</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:#e0f5ef">💧</div><div class="rinfo"><h4>Water Supply</h4><p>No water, leak, quality</p></div><div class="chev"></div></div>
+    <div class="slabel">My Complaints</div>
+    <div style="margin:4px 16px 20px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start;cursor:pointer" onclick="go('s-track-complaint')"><div><div style="font-size:13px;font-weight:600">Garbage not collected</div><div style="font-size:11px;color:var(--ink3)">SBM/BPL/2026/004821 · 1 Apr 2026</div></div><span class="pill pill-r">In Progress</span></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:13px;font-weight:600">Broken street light</div><div style="font-size:11px;color:var(--ink3)">INF/BPL/2026/001234 · 15 Mar</div></div><span class="pill pill-d">Resolved</span></div>
+    </div>
+  </div>
+  <div class="bnav">
+    <button class="ni" onclick="go('s-home')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>Home</span></button>
+    <button class="ni" onclick="go('s-my-dashboard')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></button>
+    <button class="ni act"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--blue)"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/></svg><span style="color:var(--blue)">Complaints</span></button>
+    <button class="ni" onclick="go('s-account')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Profile</span></button>
+  </div>
+</div>
+
+<!-- ════ TRACK COMPLAINT ════ -->
+<div id="s-track-complaint" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-complaints')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Track Complaint</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card" style="border-color:#b6ccf8;background:var(--blue-xlight)">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:11px;color:var(--blue);font-weight:600">COMPLAINT ID</div><div style="font-size:15px;font-weight:700;font-family:monospace">SBM/BPL/2026/004821</div></div><span class="pill pill-r">In Progress</span></div>
+      <div style="font-size:13px;color:var(--ink2);margin-top:7px">Garbage not collected — Civil Lines</div>
+      <div style="font-size:11px;color:var(--ink3)">Filed: 1 Apr 2026 · Swachh Bharat</div>
+    </div>
+    <div class="card"><h3>Status Timeline</h3>
+      <div class="tl-wrap">
+        <div class="tl"><div class="tl-dot d"></div><div class="tn">Complaint Registered</div><div class="td">1 Apr 2026, 2:30 PM</div></div>
+        <div class="tl"><div class="tl-dot a"></div><div class="tn">Assigned — Ward 12 Officer Suresh Yadav</div><div class="td">1 Apr 2026, 3:15 PM</div></div>
+        <div class="tl"><div class="tl-dot t"></div><div class="tn">Field Inspection</div><div class="td">Expected: 2 Apr 2026</div></div>
+        <div class="tl"><div class="tl-dot t"></div><div class="tn">Action Taken</div><div class="td">Expected: 3–5 Apr 2026</div></div>
+        <div class="tl" style="margin-bottom:0"><div class="tl-dot t"></div><div class="tn">Complaint Closed</div><div class="td">—</div></div>
+      </div>
+    </div>
+    <button class="btn btn-s" onclick="go('s-complaints')">Back to Complaints</button>
+  </div></div>
+</div>
+
+<!-- ════════════════════════════════════════
+     FARMER, KIOSK, TRACK APPS, TRANSACTIONS, DASHBOARD
+════════════════════════════════════════ -->
+<div id="s-farmer" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Farmer Assistance</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div style="background:#fef9c3;border-radius:14px;padding:16px;margin-bottom:12px;text-align:center"><div style="font-size:30px">🌾</div><div style="font-size:15px;font-weight:700;margin-top:7px">AI Farmer Assistant</div><div style="font-size:12px;color:var(--ink3);margin-top:4px">Ask about schemes, crops, subsidies in Hindi or English</div><button class="btn btn-p" style="margin-top:12px;font-size:13px;padding:11px">🎤 Ask via Voice / Text</button></div>
+    <div class="slabel" style="padding-left:0">Farmer Schemes</div>
+    <div class="row" onclick="go('s-schemes')"><div class="ri" style="background:#fef9c3">💰</div><div class="rinfo"><h4>PM Kisan Samman Nidhi</h4><p>₹6,000/year · Eligible</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:#e6f4e0">🌱</div><div class="rinfo"><h4>Fasal Bima Yojana</h4><p>Crop insurance</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:#ddeeff">🚜</div><div class="rinfo"><h4>Kisan Credit Card</h4><p>Low-interest farm loans</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:#f5f3ff">⚗️</div><div class="rinfo"><h4>Soil Health Card</h4><p>Free soil testing</p></div><div class="chev"></div></div>
+  </div></div>
+</div>
+
+<div id="s-kiosk" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div><h2>Find a Kiosk</h2><div class="sub">📍 Near Civil Lines, Bhopal</div></div></div></div>
+  <div class="body">
+    <div style="padding:8px 16px 0;font-size:12px;color:var(--ink3)">3 service centres nearby</div>
+    <div style="margin:10px 16px;background:var(--white);border-radius:14px;border:2px solid var(--blue);overflow:hidden;cursor:pointer">
+      <div style="background:var(--blue-xlight);padding:7px 14px;display:flex;justify-content:space-between"><div style="font-size:11px;font-weight:700;color:var(--blue)">NEAREST · 0.4 km</div><span class="pill pill-d">Open Now</span></div>
+      <div style="padding:13px"><div style="font-size:15px;font-weight:700">MPOnline Kiosk — Civil Lines</div><div style="font-size:12px;color:var(--ink3);margin-top:2px">Shop 14, Civil Lines Market</div><div style="font-size:12px;color:var(--ink3)">⏰ Mon–Sat: 9 AM – 7 PM · 📞 0755-2441234</div><div style="display:flex;gap:8px;margin-top:10px"><div style="flex:1;background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:700;padding:7px;border-radius:8px;text-align:center;cursor:pointer">📞 Call</div><div style="flex:1;background:var(--green-light);color:var(--green);font-size:12px;font-weight:700;padding:7px;border-radius:8px;text-align:center;cursor:pointer">🗺️ Directions</div><div style="flex:1;background:var(--indigo-light);color:var(--indigo);font-size:12px;font-weight:700;padding:7px;border-radius:8px;text-align:center;cursor:pointer">ℹ️ Details</div></div></div>
+    </div>
+    <div style="margin:0 16px 10px;background:var(--white);border-radius:14px;border:1px solid var(--border);padding:13px;cursor:pointer"><div style="display:flex;justify-content:space-between"><div style="font-size:14px;font-weight:700">Lok Sewa Kendra — TT Nagar</div><div style="font-size:12px;color:var(--ink3)">1.8 km</div></div><div style="font-size:12px;color:var(--ink3);margin-top:2px">Collectorate Complex · Mon–Fri: 10 AM – 5 PM</div><div style="display:flex;gap:8px;margin-top:9px"><div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:6px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">📞 Call</div><div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:6px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">🗺️ Directions</div></div></div>
+    <div style="margin:0 16px 20px;background:var(--white);border-radius:14px;border:1px solid var(--border);padding:13px;cursor:pointer"><div style="display:flex;justify-content:space-between"><div style="font-size:14px;font-weight:700">MPOnline — Hanumanganj</div><div style="font-size:12px;color:var(--ink3)">3.2 km</div></div><div style="font-size:12px;color:var(--ink3);margin-top:2px">Main Road · Mon–Sat: 9 AM – 6 PM</div><div style="display:flex;gap:8px;margin-top:9px"><div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:6px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">📞 Call</div><div style="flex:1;background:var(--surface);font-size:12px;font-weight:600;padding:6px;border-radius:8px;text-align:center;cursor:pointer;border:1px solid var(--border)">🗺️ Directions</div></div></div>
+  </div>
+</div>
+
+<!-- ════ TRACK APPS ════ -->
+<div id="s-track" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Track Applications</h2></div></div>
+  <div class="body"><div style="padding:12px 16px">
+    <div style="display:flex;gap:8px;align-items:center;background:var(--white);border-radius:10px;border:1px solid var(--border);padding:10px 13px;margin-bottom:12px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Search by Application ID…" style="border:none;background:none;font-size:14px;outline:none;width:100%;font-family:var(--font)"></div>
+    <div class="slabel" style="padding-left:0">Active</div>
+    <div style="background:var(--white);border-radius:12px;border:1.5px solid var(--blue-light);overflow:hidden;cursor:pointer;margin-bottom:10px" onclick="go('s-track-result')">
+      <div style="padding:13px"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:14px;font-weight:700">Caste Certificate</div><div style="font-size:11px;color:var(--ink3);margin-top:1px">MP/CERT/2026/018341 · 25 Mar 2026</div></div><span class="pill pill-r">In Review</span></div>
+        <div class="tl-wrap" style="margin-top:11px">
+          <div class="tl"><div class="tl-dot d"></div><div class="tn">Submitted</div><div class="td">25 Mar 2026</div></div>
+          <div class="tl"><div class="tl-dot a"></div><div class="tn">Under Review — SDM Office</div><div class="td">28 Mar 2026</div></div>
+          <div class="tl" style="margin-bottom:0"><div class="tl-dot t"></div><div class="tn">Approved & Download</div><div class="td">Expected 7–10 Apr</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="slabel" style="padding-left:0">Completed</div>
+    <div style="background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:13px;font-weight:600">Income Certificate</div><div style="font-size:11px;color:var(--ink3)">MP/CERT/2025/009821</div></div><span class="pill pill-d">Approved</span></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Domicile Certificate</div><div style="font-size:11px;color:var(--ink3)">MP/CERT/2025/005123</div></div><div style="background:var(--blue-light);color:var(--blue);font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;cursor:pointer">⬇ Download</div></div>
+    </div>
+    <div style="height:16px"></div>
+  </div></div>
+</div>
+
+<!-- ════ TRACK RESULT ════ -->
+<div id="s-track-result" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-track')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Application Status</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="card" style="border-color:#b6ccf8;background:var(--blue-xlight)">
+      <div style="display:flex;justify-content:space-between"><div><div style="font-size:11px;color:var(--blue);font-weight:600">APP ID</div><div style="font-size:15px;font-weight:700;font-family:monospace">MP/CERT/2026/018341</div></div><span class="pill pill-r">In Review</span></div>
+      <div style="font-size:13px;color:var(--ink2);margin-top:7px">Caste Certificate · SDM Bhopal</div>
+      <div style="font-size:11px;color:var(--ink3)">Submitted: 25 Mar 2026</div>
+    </div>
+    <div class="card"><h3>Timeline</h3>
+      <div class="tl-wrap">
+        <div class="tl"><div class="tl-dot d"></div><div class="tn">Submitted Online</div><div class="td">25 Mar 2026, 11:20 AM</div></div>
+        <div class="tl"><div class="tl-dot a"></div><div class="tn">Under Verification — SDM</div><div class="td">28 Mar 2026</div></div>
+        <div class="tl"><div class="tl-dot t"></div><div class="tn">Approved by SDM</div><div class="td">Expected: 7–10 Apr 2026</div></div>
+        <div class="tl" style="margin-bottom:0"><div class="tl-dot t"></div><div class="tn">Download Certificate</div><div class="td">—</div></div>
+      </div>
+    </div>
+    <div class="ib ib-blue">🔒 Approval authority: SDM · Turnaround: 7–15 working days</div>
+    <button class="btn btn-p" style="margin-top:12px" onclick="go('s-home')">Back to Home</button>
+  </div></div>
+</div>
+
+<!-- ════ PAYMENT MODES ════ -->
+<div id="s-pay-modes" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="history.go(-1)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Payment Method</h2></div></div>
+  <div class="body"><div style="padding:16px">
+    <div style="background:var(--blue-xlight);border-radius:12px;padding:13px 15px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:13px;color:var(--blue)">Amount to pay</div><div style="font-size:20px;font-weight:700;color:var(--blue)">₹4,235</div></div>
+    <div style="display:flex;flex-direction:column;gap:9px;margin-bottom:14px">
+      <label style="border:2px solid var(--blue);border-radius:12px;padding:13px;display:flex;align-items:center;gap:11px;cursor:pointer;background:var(--blue-xlight)"><input type="radio" name="pm" checked style="accent-color:var(--blue)"><div><div style="font-size:14px;font-weight:600">UPI / PhonePe / GPay</div><div style="font-size:11px;color:var(--ink3)">Instant transfer</div></div></label>
+      <label style="border:1px solid var(--border);border-radius:12px;padding:13px;display:flex;align-items:center;gap:11px;cursor:pointer"><input type="radio" name="pm" style="accent-color:var(--blue)"><div style="font-size:14px;font-weight:600">Debit / Credit Card</div></label>
+      <label style="border:1px solid var(--border);border-radius:12px;padding:13px;display:flex;align-items:center;gap:11px;cursor:pointer"><input type="radio" name="pm" style="accent-color:var(--blue)"><div style="font-size:14px;font-weight:600">Net Banking</div></label>
+      <label style="border:1px solid var(--border);border-radius:12px;padding:13px;display:flex;align-items:center;gap:11px;cursor:pointer"><input type="radio" name="pm" style="accent-color:var(--blue)"><div><div style="font-size:14px;font-weight:600">Cash at Kiosk</div><div style="font-size:11px;color:var(--ink3)">Pay at nearest MPOnline centre</div></div></label>
+    </div>
+    <button class="btn btn-p" onclick="go('s-success-pay')">Proceed to Pay</button>
+  </div></div>
+</div>
+
+<!-- ════ TRANSACTIONS ════ -->
+<div id="s-my-transactions" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>My Transactions</h2><div class="sub">All payments across services</div></div></div></div>
+  <div class="tabs"><button class="tab act" onclick="switchTab(this,'txn-all')">All</button><button class="tab" onclick="switchTab(this,'txn-nagar')">Nagarpalika</button><button class="tab" onclick="switchTab(this,'txn-cert')">Certificates</button></div>
+  <div class="body">
+    <div id="txn-all"><div style="margin:12px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Property Tax FY 2024-25</div><div style="font-size:11px;color:var(--ink3)">TXN2025BPL84720 · 28 Mar 2025</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:700">₹3,620</div><span class="pill pill-d">Paid</span></div></div>
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Water Bill — Feb 2025</div><div style="font-size:11px;color:var(--ink3)">TXN2025BPL72194 · 3 Mar 2025</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:700">₹350</div><span class="pill pill-d">Paid</span></div></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Income Certificate Fee</div><div style="font-size:11px;color:var(--ink3)">TXN2025CERT11021 · 18 Jan 2025</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:700">₹50</div><span class="pill pill-d">Paid</span></div></div>
+    </div></div>
+    <div id="txn-nagar" style="display:none"><div style="margin:12px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Property Tax FY 2024-25</div><div style="font-size:11px;color:var(--ink3)">28 Mar 2025</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:700">₹3,620</div><span class="pill pill-d">Paid</span></div></div>
+      <div style="padding:11px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Water Bill</div><div style="font-size:11px;color:var(--ink3)">3 Mar 2025</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:700">₹350</div><span class="pill pill-d">Paid</span></div></div>
+    </div></div>
+    <div id="txn-cert" style="display:none"><div style="margin:12px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:11px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Income Certificate Fee</div><div style="font-size:11px;color:var(--ink3)">18 Jan 2025</div></div><div style="text-align:right"><div style="font-size:13px;font-weight:700">₹50</div><span class="pill pill-d">Paid</span></div></div>
+    </div></div>
+    <div style="height:16px"></div>
+  </div>
+  <div class="bnav">
+    <button class="ni" onclick="go('s-home')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>Home</span></button>
+    <button class="ni" onclick="go('s-my-dashboard')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></button>
+    <button class="ni act"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--blue)"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg><span style="color:var(--blue)">Transactions</span></button>
+    <button class="ni" onclick="go('s-account')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Profile</span></button>
+  </div>
+</div>
+
+<!-- ════ DASHBOARD ════ -->
+<div id="s-my-dashboard" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-home')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>My Dashboard</h2></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div></div>
+  <div class="body">
+    <div class="slabel">Profile Summary</div>
+    <div style="margin:4px 16px 12px;background:var(--white);border-radius:12px;border:1px solid var(--border);padding:13px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div style="background:var(--blue-xlight);border-radius:10px;padding:10px 12px"><div style="font-size:11px;color:var(--ink3)">Samagra ID</div><div style="font-size:13px;font-weight:700;color:var(--blue);margin-top:2px">12345 6789</div></div>
+      <div style="background:var(--green-light);border-radius:10px;padding:10px 12px"><div style="font-size:11px;color:var(--ink3)">Aadhaar</div><div style="font-size:13px;font-weight:700;color:var(--green);margin-top:2px">XXXX 8421</div></div>
+      <div style="background:var(--orange-light);border-radius:10px;padding:10px 12px"><div style="font-size:11px;color:var(--ink3)">Active Schemes</div><div style="font-size:13px;font-weight:700;color:var(--orange);margin-top:2px">2 availed</div></div>
+      <div style="background:var(--purple-light);border-radius:10px;padding:10px 12px"><div style="font-size:11px;color:var(--ink3)">Open Apps</div><div style="font-size:13px;font-weight:700;color:var(--purple);margin-top:2px">1 pending</div></div>
+    </div></div>
+    <div class="slabel">Pending Actions</div>
+    <div class="row" onclick="go('s-prop-tax')"><div class="ri" style="background:var(--orange-light)">⚠️</div><div class="rinfo"><h4>Property Tax Due</h4><p>₹4,235 · 30 Apr 2026</p></div><button style="font-size:11px;font-weight:700;background:var(--blue);color:#fff;border:none;border-radius:20px;padding:5px 12px;cursor:pointer;white-space:nowrap;font-family:var(--font)">Pay Now</button></div>
+    <div class="row" onclick="go('s-track-result')"><div class="ri" style="background:var(--blue-light)">📄</div><div class="rinfo"><h4>Caste Certificate</h4><p>Under review</p></div><span class="pill pill-r">In Review</span></div>
+    <div class="slabel">Quick Access</div>
+    <div class="svc-grid" style="padding-bottom:20px">
+      <div class="svc-card" onclick="go('s-schemes')"><div class="svc-icon" style="background:#f5f3ff">🏛️</div><div><div class="svc-title">My Schemes</div></div></div>
+      <div class="svc-card" onclick="go('s-land')"><div class="svc-icon" style="background:#e6f4e0">🗺️</div><div><div class="svc-title">Land Records</div></div></div>
+      <div class="svc-card" onclick="go('s-my-transactions')"><div class="svc-icon" style="background:#ddeeff">💳</div><div><div class="svc-title">Transactions</div></div></div>
+      <div class="svc-card" onclick="go('s-track')"><div class="svc-icon" style="background:#fef9c3">🔍</div><div><div class="svc-title">Track Apps</div></div></div>
+    </div>
+  </div>
+  <div class="bnav">
+    <button class="ni" onclick="go('s-home')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>Home</span></button>
+    <button class="ni act"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--blue)"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span style="color:var(--blue)">Dashboard</span></button>
+    <button class="ni" onclick="go('s-my-transactions')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg><span>Transactions</span></button>
+    <button class="ni" onclick="go('s-account')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span>Profile</span></button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     PROFILE / ACCOUNT
+════════════════════════════════════════ -->
+<div id="s-account" class="scr">
+  <div class="profile-hero">
+    <div style="display:flex;gap:13px;align-items:center;margin-bottom:12px">
+      <div class="avatar">RK</div>
+      <div style="flex:1"><div style="color:#fff;font-size:17px;font-weight:700">Rajesh Kumar</div><div style="color:rgba(255,255,255,.72);font-size:12px;margin-top:2px">+91 74405 41354</div><div style="color:rgba(255,255,255,.58);font-size:12px">rajesh@example.com</div></div>
+      <div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px"><div class="id-chip"><div class="ico">🪪</div><span class="lbl">XXXX 8421</span><span class="ck">✓ Aadhaar</span></div><div class="id-chip"><div class="ico">🏛️</div><span class="lbl">12345 6789</span><span class="ck">✓ Samagra</span></div></div>
+  </div>
+  <div class="body" style="background:var(--white)">
+    <div style="margin:12px 16px;background:var(--white);border-radius:12px;border:1px solid var(--border);padding:13px">
+      <div style="font-size:12px;font-weight:700;color:var(--ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Family Members on this Mobile</div>
+      <div class="ib ib-amber" style="margin-bottom:10px;font-size:11px">⚠️ 3 Aadhaar IDs linked to this number. Only you (device owner) are authenticated.</div>
+      <div class="fmember"><div class="fav" style="background:var(--blue-light);color:var(--blue)">RK</div><div style="flex:1"><div class="fn">Rajesh Kumar (You)</div><div class="fd">Aadhaar: XXXX 8421 · DOB: 12 Jul 1982</div></div><div style="font-size:10px;font-weight:700;background:var(--green-light);color:var(--green);padding:3px 9px;border-radius:20px">Active</div></div>
+      <div class="fmember"><div class="fav" style="background:#fce7f3;color:#be185d">SK</div><div style="flex:1"><div class="fn">Sunita Kumar (Wife)</div><div class="fd">Aadhaar: XXXX 3218 · DOB: 8 Mar 1985</div></div><div style="font-size:10px;color:var(--ink3);background:var(--surface);padding:3px 9px;border-radius:20px;border:1px solid var(--border);cursor:pointer">Switch</div></div>
+      <div class="fmember"><div class="fav" style="background:#e0f5ef;color:#065f46">AK</div><div style="flex:1"><div class="fn">Amit Kumar (Son)</div><div class="fd">Aadhaar: XXXX 9912 · DOB: 3 Jun 2008</div></div><div style="font-size:10px;color:var(--ink3);background:var(--surface);padding:3px 9px;border-radius:20px;border:1px solid var(--border);cursor:pointer">Switch</div></div>
+      <div style="margin-top:9px;text-align:center;font-size:12px;color:var(--blue);font-weight:600;cursor:pointer">+ Add Family Member</div>
+    </div>
+    <div class="slabel">My Profile</div>
+    <div class="row" onclick="go('s-edit-profile')"><div class="ri" style="background:var(--blue-light);width:36px;height:36px;border-radius:8px;font-size:15px">👤</div><div class="rinfo"><h4>Edit Profile</h4><p>Name · Email · Address</p></div><div class="chev"></div></div>
+    <div class="row"><div class="ri" style="background:var(--green-light);width:36px;height:36px;border-radius:8px;font-size:15px">🪪</div><div class="rinfo"><h4>My Documents</h4><p>Aadhaar, Samagra, certificates</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-schemes')"><div class="ri" style="background:#f5f3ff;width:36px;height:36px;border-radius:8px;font-size:15px">🏛️</div><div class="rinfo"><h4>My Schemes</h4><p>Active & eligible</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-land')"><div class="ri" style="background:#e6f4e0;width:36px;height:36px;border-radius:8px;font-size:15px">🗺️</div><div class="rinfo"><h4>Land Records</h4><p>Linked properties</p></div><div class="chev"></div></div>
+    <div class="slabel">Settings</div>
+    <div class="row"><div class="ri" style="background:var(--teal-light);width:36px;height:36px;border-radius:8px;font-size:15px">🔔</div><div class="rinfo"><h4>Notifications</h4><p>SMS & push preferences</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-language')"><div class="ri" style="background:#fef9c3;width:36px;height:36px;border-radius:8px;font-size:15px">🌐</div><div class="rinfo"><h4>Language</h4><p id="lang-setting-lbl">Currently: English (E)</p></div><div class="chev"></div></div>
+    <div class="slabel">Support</div>
+    <div class="row" onclick="go('s-help')"><div class="ri" style="background:#EDE9FE;width:36px;height:36px;border-radius:8px;font-size:15px">❓</div><div class="rinfo"><h4>Help Centre</h4><p>FAQs, guides, contact us</p></div><div class="chev"></div></div>
+    <div class="row" onclick="go('s-login')" style="margin-bottom:12px"><div class="ri" style="background:var(--red-light);width:36px;height:36px;border-radius:8px;font-size:15px">🚪</div><div class="rinfo"><h4 style="color:var(--red)">Logout</h4><p style="color:var(--ink3)">Sign out of MP Sarkar</p></div></div>
+  </div>
+  <div class="bnav">
+    <button class="ni" onclick="go('s-home')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg><span>Home</span></button>
+    <button class="ni" onclick="go('s-my-dashboard')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg><span>Dashboard</span></button>
+    <button class="ni" onclick="go('s-my-transactions')"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink3)" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg><span>Transactions</span></button>
+    <button class="ni act"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--blue)"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg><span style="color:var(--blue)">Profile</span></button>
+  </div>
+</div>
+
+<!-- ════ EDIT PROFILE ════ -->
+<div id="s-edit-profile" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-account')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>My Profile</h2></div><div class="lang-btn" onclick="toggleLang()"><span class="hi">अ</span><span class="en active">E</span></div></div></div>
+  <div class="body"><div style="padding:16px">
+    <div class="ib ib-blue" style="margin-bottom:12px">🪪 Fields marked <strong>Auto</strong> are fetched from Aadhaar / Samagra. Contact the department to update those.</div>
+    <div class="card"><h3>Personal Information</h3>
+      <div class="field"><label>First Name <span class="auto-tag">Auto</span></label><input type="text" value="Rajesh" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Middle Name</label><input type="text" placeholder="Optional"></div>
+      <div class="field"><label>Last Name <span class="auto-tag">Auto</span></label><input type="text" value="Kumar" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Date of Birth <span class="auto-tag">Auto</span></label><input type="text" value="12 Jul 1982" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Gender <span class="auto-tag">Auto</span></label><input type="text" value="Male" readonly style="background:#f0f0f0"></div>
+    </div>
+    <div class="card"><h3>Contact</h3>
+      <div class="field"><label>Mobile</label><input type="text" value="74405 41354" readonly style="background:#f0f0f0"><div style="font-size:11px;color:var(--ink3);margin-top:3px">Login identity — contact support to change</div></div>
+      <div class="field"><label>Email</label><input type="email" value="rajesh@example.com"></div>
+      <div class="field"><label>Alternate Mobile</label><input type="text" placeholder="Optional"></div>
+    </div>
+    <div class="card"><h3>Address <span class="auto-tag">Auto from Aadhaar</span></h3>
+      <div class="field"><label>Address Line 1</label><input type="text" value="Plot 24, Civil Lines"></div>
+      <div class="field"><label>City <span class="auto-tag">Auto</span></label><input type="text" value="Bhopal" readonly style="background:#f0f0f0"></div>
+      <div class="field"><label>Pincode <span class="auto-tag">Auto</span></label><input type="text" value="462001" readonly style="background:#f0f0f0"></div>
+    </div>
+    <button class="btn btn-p" style="margin-bottom:8px">Update Profile</button>
+    <button class="btn btn-s" onclick="go('s-account')">Cancel</button>
+    <div style="height:16px"></div>
+  </div></div>
+</div>
+
+<!-- ════ LANGUAGE ════ -->
+<div id="s-language" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-account')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><h2>Language / भाषा</h2></div></div>
+  <div class="body"><div style="padding:20px 16px">
+    <div style="font-size:13px;color:var(--ink2);margin-bottom:14px">Select your preferred language</div>
+    <div id="lo-en" style="border:2px solid var(--blue);border-radius:12px;padding:15px;display:flex;align-items:center;gap:13px;cursor:pointer;margin-bottom:10px;background:var(--blue-xlight)" onclick="setLang('en')"><div style="width:38px;height:38px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;color:var(--blue)">E</div><div style="flex:1"><div style="font-size:15px;font-weight:700">English</div><div style="font-size:12px;color:var(--ink3)">Labels and content in English</div></div><span id="lc-en" style="font-size:18px;color:var(--blue)">✓</span></div>
+    <div id="lo-hi" style="border:1px solid var(--border);border-radius:12px;padding:15px;display:flex;align-items:center;gap:13px;cursor:pointer;margin-bottom:10px" onclick="setLang('hi')"><div style="width:38px;height:38px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:700;color:var(--blue)">अ</div><div style="flex:1"><div style="font-size:15px;font-weight:700">हिंदी</div><div style="font-size:12px;color:var(--ink3)">सामग्री हिंदी में</div></div><span id="lc-hi" style="font-size:18px;color:var(--ink4)">○</span></div>
+    <div class="ib ib-blue">You can also toggle via the <strong>अ/E button</strong> on any screen header.</div>
+  </div></div>
+</div>
+
+<!-- ════ HELP CENTRE ════ -->
+<div id="s-help" class="scr">
+  <div class="tbar"><div class="tbar-row"><button class="back" onclick="go('s-account')"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg></button><div style="flex:1"><h2>Help Centre</h2><div class="sub">FAQs & Support</div></div></div></div>
+  <div class="body">
+    <div style="margin:10px 16px"><input type="text" placeholder="Search help topics…" style="width:100%;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:14px;outline:none;font-family:var(--font)"></div>
+    <div class="slabel">Frequently Asked Questions</div>
+    <div class="help-row" onclick="toggleFAQ(this)"><div style="flex:1"><div style="font-size:13px;font-weight:600">How do I pay my property tax?</div><div class="help-ans">Go to Nagarpalika → Property Tax → your property is auto-fetched → choose UPI/card/net banking → done.</div></div><div style="font-size:16px;color:var(--ink3);transition:transform .2s">›</div></div>
+    <div class="help-row" onclick="toggleFAQ(this)"><div style="flex:1"><div style="font-size:13px;font-weight:600">How do I apply for a caste certificate?</div><div class="help-ans">Go to Certificates → Caste Certificate → details auto-fill from Samagra → upload Aadhaar → submit. Processing takes 7–15 working days.</div></div><div style="font-size:16px;color:var(--ink3);transition:transform .2s">›</div></div>
+    <div class="help-row" onclick="toggleFAQ(this)"><div style="flex:1"><div style="font-size:13px;font-weight:600">What is the SOS Women Safety feature?</div><div class="help-ans">Press & hold the SOS button 3 seconds to send your GPS location to 3 emergency contacts and the nearest police station simultaneously.</div></div><div style="font-size:16px;color:var(--ink3);transition:transform .2s">›</div></div>
+    <div class="help-row" onclick="toggleFAQ(this)"><div style="flex:1"><div style="font-size:13px;font-weight:600">Why are multiple Aadhaar IDs in my profile?</div><div class="help-ans">If family members registered the same mobile number, all linked IDs appear. Only the authenticated device user can access services in a session.</div></div><div style="font-size:16px;color:var(--ink3);transition:transform .2s">›</div></div>
+    <div class="help-row" onclick="toggleFAQ(this)"><div style="flex:1"><div style="font-size:13px;font-weight:600">How do I file a Swachh Bharat complaint?</div><div class="help-ans">Tap the Swachh Bharat banner → capture photo of the issue → GPS is auto-tagged → fill details → submit. You'll get a complaint ID and SMS updates.</div></div><div style="font-size:16px;color:var(--ink3);transition:transform .2s">›</div></div>
+    <div class="slabel">Contact Support</div>
+    <div style="margin:4px 16px 20px;background:var(--white);border-radius:12px;border:1px solid var(--border);overflow:hidden">
+      <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">MP Helpline</div><div style="font-size:11px;color:var(--ink3)">9 AM – 6 PM</div></div><div style="background:var(--blue-light);color:var(--blue);font-size:12px;font-weight:700;padding:5px 13px;border-radius:20px;cursor:pointer">📞 0755-1234567</div></div>
+      <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:13px;font-weight:600">Email Support</div><div style="font-size:11px;color:var(--ink3)">Response in 24–48 hours</div></div><div style="background:var(--surface);font-size:12px;font-weight:600;padding:5px 13px;border-radius:20px;cursor:pointer;border:1px solid var(--border)">✉️ Send Email</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SUCCESS APP ════ -->
+<div id="s-success-app" class="scr">
+  <div class="tbar"><div class="tbar-row"><div style="width:32px"></div><h2>Application Submitted</h2></div></div>
+  <div class="body" style="background:var(--white)">
+    <div class="success-wrap">
+      <div class="sc"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div style="font-size:20px;font-weight:700">Application Submitted!</div>
+      <div style="font-size:13px;color:var(--ink3);margin-top:7px;line-height:1.6">Received by the concerned department. SMS updates at each stage.</div>
+      <div class="ref-box"><div style="font-size:12px;color:var(--blue);font-weight:600">Application ID</div><div style="font-size:17px;font-weight:700;font-family:monospace;margin-top:3px">MP/APP/2026/017483</div><div style="font-size:12px;color:var(--ink3);margin-top:5px">Bhopal · 1 Apr 2026</div></div>
+      <div style="font-size:12px;color:var(--ink3)">Processing: <strong>7–15 working days</strong></div>
+      <div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-top:18px">
+        <button class="btn btn-p" onclick="go('s-track-result')">Track Application</button>
+        <button class="btn btn-s" onclick="go('s-home')">Back to Home</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SUCCESS PAY ════ -->
+<div id="s-success-pay" class="scr">
+  <div class="tbar"><div class="tbar-row"><div style="width:32px"></div><h2>Payment Successful</h2></div></div>
+  <div class="body" style="background:var(--white)">
+    <div class="success-wrap">
+      <div class="sc"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <div style="font-size:20px;font-weight:700">Payment Successful!</div>
+      <div style="font-size:13px;color:var(--ink3);margin-top:7px;line-height:1.6">Receipt sent to your registered mobile.</div>
+      <div class="ref-box"><div style="font-size:12px;color:var(--blue);font-weight:600">Transaction ID</div><div style="font-size:17px;font-weight:700;font-family:monospace;margin-top:3px">TXN2026BPL84721</div><div style="font-size:22px;font-weight:700;color:var(--green);margin-top:7px">₹4,235 paid</div><div style="font-size:12px;color:var(--ink3);margin-top:3px">Bhopal Nagar Nigam · 1 Apr 2026</div></div>
+      <div style="width:100%;display:flex;flex-direction:column;gap:8px;margin-top:8px">
+        <button class="btn btn-p">⬇ Download Receipt</button>
+        <button class="btn btn-s" onclick="go('s-home')">Back to Home</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /device -->
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
