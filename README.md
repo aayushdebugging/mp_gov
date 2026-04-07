@@ -24,10 +24,17 @@ Static demo of a unified Madhya Pradesh citizen-services style UI: login flows, 
    git push -u origin main
    ```
 
-3. **Enable GitHub Pages (Actions)**  
-   In the repo: **Settings → Pages → Build and deployment → Source**: choose **GitHub Actions**.
+3. **Turn on Pages for Actions (required before deploy succeeds)**  
+   In the GitHub repo: **Settings → Pages**. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”). Save if prompted.  
+   Until this is set, GitHub has no Pages site record; workflows that call the Pages API can fail with **“Get Pages site failed” / Not Found**.
 
-4. Push to `main` (or `master`). The workflow **Deploy to GitHub Pages** uploads the `public/` directory. After it finishes, open the **Pages** URL shown in the workflow run (typically `https://YOUR_USERNAME.github.io/YOUR_REPO/`).
+4. Run the workflow: push to `main` (or `master`), or open **Actions → Deploy to GitHub Pages → Run workflow**. When it succeeds, the live URL is in the job summary (often `https://YOUR_USERNAME.github.io/YOUR_REPO/`).
+
+### If you already saw “Get Pages site failed”
+
+Complete step 3 above, then in **Actions** open the failed run and click **Re-run all jobs**, or use **Run workflow** on **Deploy to GitHub Pages**.
+
+The optional `enablement` input on `configure-pages` only works with a **personal access token** stored as a secret—not with the default `GITHUB_TOKEN`—so this repo’s workflow does not use that step; enabling Pages once in Settings is the intended path.
 
 ### Optional: Pages from `/docs` instead
 
